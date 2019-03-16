@@ -3,6 +3,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@a
 import {ErrorStateMatcher} from '@angular/material/core';
 import { UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
+import { LanguageService } from '../services/language.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -49,7 +50,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private langService: LanguageService
   ) { }
 
   ngOnInit() {
@@ -69,15 +71,24 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      // this._userService.register(
-      //   this.registerForm.get('email').value,
-      //   this.registerForm.get('password').value,
-      //   this.registerForm.get('username').value
-      // ).subscribe(data => {
-      //   console.log(data);
-      //   this._router.navigate(['login']);
-      // });
+      this.usersService.register(
+        this.registerForm.get('email').value,
+        this.registerForm.get('password').value,
+        this.registerForm.get('firstName').value,
+        this.registerForm.get('lastName').value
+      ).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['login']);
+      });
       console.log(this.registerForm);
     }
+  }
+
+  get registerTexts() {
+    return this.langService.registerTexts;
+  }
+
+  get selectedLang() {
+    return this.langService.selectedLang;
   }
 }

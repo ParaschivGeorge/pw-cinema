@@ -1,6 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import url( 'https://fonts.googleapis.com/icon?family=Material+Icons');
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.primary-color {
+    color: #3f51b5;
+}
+
+.accent-color {
+    color: #ff4081;
+}
+
+.warn-color {
+    color: #f44336;
+}
+
+.primary-background {
+    background: #3f51b5;
+}
+
+.accent-background {
+    background: #ff4081;
+}
+
+.warn-background {
+    background: #f44336;
+}
 
 h1{font-size:2rem}
 h2{font-size:1.5rem}

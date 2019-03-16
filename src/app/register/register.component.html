@@ -1,26 +1,25 @@
 <div class="container-fluid">
   <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="registerForm">
-    <h2>Register</h2>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Email" formControlName="email"
+      <input matInput [placeholder]="registerTexts.email[selectedLang]" formControlName="email"
         [errorStateMatcher]="matcher">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="First name" formControlName="firstName"
+      <input matInput [placeholder]="registerTexts.firstName[selectedLang]" formControlName="firstName"
         [errorStateMatcher]="matcher">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Last name" formControlName="lastName"
+      <input matInput [placeholder]="registerTexts.lastName[selectedLang]" formControlName="lastName"
         [errorStateMatcher]="matcher">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Password" formControlName="password" type="password"
+      <input matInput [placeholder]="registerTexts.password[selectedLang]" formControlName="password" type="password"
         [errorStateMatcher]="matcher">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Confirm Password" formControlName="confirm-password" type="password"
+      <input matInput [placeholder]="registerTexts.confirmPassword[selectedLang]" formControlName="confirm-password" type="password"
         [errorStateMatcher]="matcher">
     </mat-form-field>
-    <button mat-raised-button type="submit">Register</button>
+    <button mat-raised-button color="primary" type="submit">{{registerTexts.register[selectedLang]}}</button>
   </form>
 </div>

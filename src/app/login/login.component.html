@@ -1,14 +1,13 @@
 <div class="container-fluid">
   <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="loginForm">
-    <h2>Login</h2>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Email" formControlName="email"
+      <input matInput [placeholder]="loginTexts.email[selectedLang]" formControlName="email"
         [errorStateMatcher]="matcher">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Password" formControlName="password" type="password"
+      <input matInput [placeholder]="loginTexts.password[selectedLang]" formControlName="password" type="password"
         [errorStateMatcher]="matcher">
     </mat-form-field>
-    <button mat-raised-button type="submit">Login</button>
+    <button mat-raised-button color="primary" type="submit">{{loginTexts.login[selectedLang]}}</button>
   </form>
 </div>
