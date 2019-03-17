@@ -69,11 +69,11 @@
   ],
   "reviews": [
     {
-      "id": 1,
       "userId": 2,
-      "movieId": 1,
-      "rating": 4,
-      "comment": "bun da nu prea."
+      "movieId": "1",
+      "rating": 5,
+      "comment": "'Avengers Assemble' ('The Avengers') is a truly enjoyable superhero film that lives up to its hype and creates a story that allows for four of the greatest superheroes to connect in this mega-blockbuster extravaganza. Joss Whedon has created one of the most action-packed Marvel films to have graced the screen, full of humour, thrills and a great cast of characters, all of which impel this visual effects-driven spectacle. Whilst I had the great opportunity to watch this epic in the cinema in 3D, the film is equally as stunning on an average television set, with the final battle between the Avengers and Loki's army being one of the most spectacular scenes in a superhero movie. An impressive and remarkable fantastical superhero flick from Whedon.",
+      "id": 1
     }
   ]
 }

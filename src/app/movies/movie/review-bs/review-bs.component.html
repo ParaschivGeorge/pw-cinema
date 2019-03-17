@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <form class="review-form" [formGroup]="reviewForm" (ngSubmit)="onSubmit()" *ngIf="reviewForm">
+    <mat-form-field class="full-width">
+      <mat-select  [placeholder]="reviewBsTexts.rating[selectedLang]" formControlName="rating" name="rating">
+        <mat-option *ngFor="let rating of ratings" [value]="rating">
+          {{rating}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>{{reviewBsTexts.comment[selectedLang]}}</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="2"
+                formControlName="comment">
+      </textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">{{reviewBsTexts.submit[selectedLang]}}</button>
+  </form>
+</div>

@@ -41,6 +41,17 @@ export class LanguageService {
     description: ['Description', 'Descriere'],
     submit: ['Submit', 'Confirma']
   };
+  public movieTexts = {
+    reviews: ['Reviews', 'Recenzii'],
+    edit: ['Edit', 'Modifica'],
+    delete: ['Delete', 'Sterge'],
+    add: ['Add a review', 'Adauga o recenzie']
+  };
+  public reviewBsTexts = {
+    rating: ['Rating', 'Evaluare'],
+    comment: ['Comment', 'Comentariu'],
+    submit: ['Submit', 'Confirma']
+  };
 
   constructor() { }
 

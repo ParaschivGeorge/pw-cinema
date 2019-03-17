@@ -16,8 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { MovieComponent } from './movies/movie/movie.component';
 import { SafeUrlPipe } from './utils/safe-url.pipe';
-import { ReviewComponent } from './movies/movie/review/review.component';
 import { MovieBsComponent } from './movies/movie-bs/movie-bs.component';
+import { ReviewBsComponent } from './movies/movie/review-bs/review-bs.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +28,14 @@ import { MovieBsComponent } from './movies/movie-bs/movie-bs.component';
     MoviesComponent,
     UsersComponent,
     ErrorPageComponent,
-    ReviewComponent,
     MovieComponent,
     SafeUrlPipe,
-    MovieBsComponent
+    MovieBsComponent,
+    ReviewBsComponent
   ],
   entryComponents: [
-    MovieBsComponent
+    MovieBsComponent,
+    ReviewBsComponent
   ],
   imports: [
     BrowserModule,

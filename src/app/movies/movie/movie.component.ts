@@ -4,6 +4,12 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { ReviewsService } from 'src/app/services/reviews.service';
 import { Movie } from 'src/app/models/movie';
 import { Review } from 'src/app/models/review';
+import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/services/users.service';
+import { MatBottomSheet } from '@angular/material';
+import { Subject } from 'rxjs';
+import { ReviewBsComponent } from './review-bs/review-bs.component';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-movie',
@@ -16,32 +22,70 @@ export class MovieComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private moviesService: MoviesService,
-    private reviewsService: ReviewsService) { }
+    private reviewsService: ReviewsService,
+    private usersService: UsersService,
+    private bottomSheet: MatBottomSheet,
+    private langService: LanguageService) {
+      this.reviewSubject.asObservable().subscribe(data => {
+        this.getReviews();
+      });
+     }
 
   movie: Movie = null;
   reviews: Review[] = [];
 
   ngOnInit() {
-    this.route.snapshot.params.subscribe(params => {
-      this.moviesService.get(params['id']).subscribe(
-        movie => {
-          this.movie = movie;
-          console.log(movie);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-      this.reviewsService.getAll(params['id'], null).subscribe(
-        reviews => {
-          this.reviews = reviews;
-          console.log(reviews);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    });
+    this.reviewsService.movieId = this.route.snapshot.params['id'];
+    this.moviesService.get(this.route.snapshot.params['id']).subscribe(
+      movie => {
+        this.movie = movie;
+        console.log(movie);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.getReviews();
   }
 
+  getReviews() {
+    this.reviewsService.getAll(this.route.snapshot.params['id'], null).subscribe(
+      reviews => {
+        this.reviews = reviews;
+        console.log(reviews);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  arrayTwo(n: number): number[] {
+    return [...Array.from(Array(n).keys())];
+  }
+
+  get user(): User {
+    return this.usersService.user;
+  }
+
+  openBottomSheet(review: Review) {
+    this.reviewsService.review = review;
+    this.bottomSheet.open(ReviewBsComponent);
+  }
+
+  deleteReview(reviewId: number) {
+    this.reviewsService.delete(reviewId).subscribe(data => this.getReviews());
+  }
+
+  get reviewSubject(): Subject<boolean> {
+    return this.reviewsService.reviewSubject;
+  }
+
+  get movieTexts() {
+    return this.langService.movieTexts;
+  }
+
+  get selectedLang() {
+    return this.langService.selectedLang;
+  }
 }

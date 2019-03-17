@@ -25,13 +25,14 @@ export class MoviesComponent implements OnInit {
     private moviesService: MoviesService,
     private usersService: UsersService,
     private bottomSheet: MatBottomSheet,
-    private langService: LanguageService) { }
+    private langService: LanguageService) {
+      this.movieSubject.asObservable().subscribe(data => {
+        this.getMovies();
+      });
+    }
 
   ngOnInit() {
     this.getMovies();
-    this.movieSubject.asObservable().subscribe(data => {
-      this.getMovies();
-    });
   }
 
   getMovies() {
@@ -57,7 +58,7 @@ export class MoviesComponent implements OnInit {
     },
     error => {
       console.log(error);
-    })
+    });
   }
 
   get user(): User {

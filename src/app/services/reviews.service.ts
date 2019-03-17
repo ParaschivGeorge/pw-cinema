@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Review } from '../models/review';
 import { environment } from 'src/environments/environment';
 
@@ -8,6 +8,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ReviewsService {
+
+  public review = null;
+  public reviewSubject = new Subject<boolean>();
+  public movieId = null;
 
   constructor(private http: HttpClient) { }
 
@@ -40,7 +44,7 @@ export class ReviewsService {
   }
 
   update(id: number, userId: number, movieId: number, rating: number, comment: string): Observable<Review> {
-    return this.http.request<Review>('post', environment.apiUrl + '/reviews/' + id, {body: {
+    return this.http.request<Review>('put', environment.apiUrl + '/reviews/' + id, {body: {
       userId: userId,
       movieId: movieId,
       rating: rating,
