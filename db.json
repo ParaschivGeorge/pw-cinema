@@ -51,12 +51,20 @@
   ],
   "movies": [
     {
-      "id": 1,
-      "releaseDate": "10.10.2010",
-      "title": "Avengers",
-      "description": "Mizerie de film.",
-      "photoUrl": "urleu",
-      "type": "action"
+      "releaseDate": "5.4.2012",
+      "title": "The Avengers",
+      "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+      "photoUrl": "https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg",
+      "type": "adventure",
+      "id": 1
+    },
+    {
+      "releaseDate": "3.8.2019",
+      "title": "Captain Marvel",
+      "description": "Carol Danvers becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races.",
+      "photoUrl": "https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      "type": "action",
+      "id": 2
     }
   ],
   "reviews": [

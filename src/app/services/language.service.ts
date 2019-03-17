@@ -27,6 +27,20 @@ export class LanguageService {
     confirmPassword: ['Confirm password', 'Confirma parola'],
     register: ['Register', 'Inregistrare'],
   };
+  public moviesTexts = {
+    add: ['Add a movie', 'Adauga un film'],
+    reviews: ['Reviews', 'Recenzii'],
+    edit: ['Edit', 'Modifica'],
+    delete: ['Delete', 'Sterge']
+  };
+  public moviesBsTexts = {
+    title: ['Title', 'Titlu'],
+    type: ['Type', 'Gen'],
+    releaseDate: ['Release date', 'Data aparitie'],
+    photoUrl: ['Poster photo url', 'Url poza afis'],
+    description: ['Description', 'Descriere'],
+    submit: ['Submit', 'Confirma']
+  };
 
   constructor() { }
 

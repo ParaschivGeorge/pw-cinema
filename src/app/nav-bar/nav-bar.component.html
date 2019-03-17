@@ -8,14 +8,14 @@
       
     <span class="welcome" *ngIf="user">{{navbarTexts.hello[selectedLang]}}, {{user.firstName}}!</span>
     <span class="fill-remaining-space"></span>
-    <button mat-raised-button fxHide.gt-sm="true" *ngIf="user">{{navbarTexts.logout[selectedLang]}}</button> 
+    <button mat-raised-button fxHide.gt-sm="true" *ngIf="user" (click)="logout()">{{navbarTexts.logout[selectedLang]}}</button> 
     
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/login" *ngIf="!user">{{navbarTexts.login[selectedLang]}}</a>
       <a mat-button routerLink="/register" *ngIf="!user">{{navbarTexts.register[selectedLang]}}</a>
       <a mat-button routerLink="/movies">{{navbarTexts.movies[selectedLang]}}</a>
       <a mat-button routerLink="/users">{{navbarTexts.users[selectedLang]}}</a>
-      <button mat-raised-button *ngIf="user">{{navbarTexts.logout[selectedLang]}}</button>
+      <button mat-raised-button *ngIf="user" (click)="logout()">{{navbarTexts.logout[selectedLang]}}</button>
       <img (click)="selectRo()" class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/ro.svg" height="20" alt="Romania Flag">
       <img (click)="selectUS()" class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/us.svg" height="20" alt="United States of America Flag">
     </div>

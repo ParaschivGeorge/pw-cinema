@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Movie } from '../models/movie';
 import { environment } from 'src/environments/environment';
 
@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
 export class MoviesService {
 
   constructor(private http: HttpClient) { }
+
+  public movie = null;
+  public movieSubject = new Subject<boolean>();
 
   getAll(titleLike: string, type: string): Observable<Movie[]> {
     let queryParams = new HttpParams();
@@ -41,7 +44,7 @@ export class MoviesService {
   }
 
   update(id: number, releaseDate: string, title: string, description: string, photoUrl: string, type: string): Observable<Movie> {
-    return this.http.request<Movie>('post', environment.apiUrl + '/movies/' + id, {body: {
+    return this.http.request<Movie>('put', environment.apiUrl + '/movies/' + id, {body: {
       releaseDate: releaseDate,
       title: title,
       description: description,

@@ -14,6 +14,10 @@ import { UsersComponent } from './users/users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { MovieComponent } from './movies/movie/movie.component';
+import { SafeUrlPipe } from './utils/safe-url.pipe';
+import { ReviewComponent } from './movies/movie/review/review.component';
+import { MovieBsComponent } from './movies/movie-bs/movie-bs.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,14 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     RegisterComponent,
     MoviesComponent,
     UsersComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ReviewComponent,
+    MovieComponent,
+    SafeUrlPipe,
+    MovieBsComponent
+  ],
+  entryComponents: [
+    MovieBsComponent
   ],
   imports: [
     BrowserModule,
