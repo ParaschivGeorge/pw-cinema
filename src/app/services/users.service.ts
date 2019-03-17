@@ -13,20 +13,38 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<User[]> {
     let queryParams = new HttpParams().set('email', email);
     queryParams = queryParams.append('password', password);
 
-    return this.http.request('get', environment.apiUrl + '/users', {params: queryParams});
+    return this.http.request<User[]>('get', environment.apiUrl + '/users', {params: queryParams});
   }
 
-  register(email: string, password: string, firstName: string, lastName: string): Observable<any> {
-    return this.http.request('post', environment.apiUrl + '/users', {body : {
+  register(email: string, password: string, firstName: string, lastName: string): Observable<User> {
+    return this.http.request<User>('post', environment.apiUrl + '/users', {body: {
       email: email,
       password: password,
       role: 'user',
       firstName: firstName,
       lastName: lastName
     }});
+  }
+
+  update(id: number, email: string, password: string, firstName: string, lastName: string): Observable<User> {
+    return this.http.request<User>('put', environment.apiUrl + '/users/' + id, {body: {
+      email: email,
+      password: password,
+      role: 'user',
+      firstName: firstName,
+      lastName: lastName
+    }});
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.request('delete', environment.apiUrl + '/users/' + id);
+  }
+
+  get(id: number): Observable<User> {
+    return this.http.request<User>('get', environment.apiUrl + '/users/' + id);
   }
 }
