@@ -1,36 +1,36 @@
 <div class="container-fluid">
-    <mat-card class="movie-card" *ngIf="movie">
-      <mat-card-header>
-        <mat-card-title>{{movie.title}}</mat-card-title>
-        <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
-      </mat-card-header>
-      <img class="poster" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
-      <mat-card-content>
-        <p class="description">
-          {{movie.description}}
-        </p>
-        <p *ngIf="reviews.length">{{movieTexts.reviews[selectedLang]}}</p>
-        <mat-divider></mat-divider>
-        <div class="review" *ngFor="let review of reviews">
-          <div fxLayout="row" fxLayoutAlign="space-around center">
-            <p>User: {{review.userId}}</p>
-            <span class="fill-remaining-space"></span>
-            <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
-              stars
-            </i>
-          </div>
-          <p class="review-text">
-            {{review.comment}}
-          </p>
-          <mat-card-actions *ngIf="user">
-            <button mat-raised-button class="button-mid"color="accent" *ngIf="review.userId === user.id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
-            <button mat-raised-button class="button" color="warn" *ngIf="review.userId === user.id || user.role === 'admin'" (click)="deleteReview(review.id)">{{movieTexts.delete[selectedLang]}}</button>
-          </mat-card-actions>
-          <mat-divider></mat-divider>
+  <mat-card class="movie-card" *ngIf="movie">
+    <mat-card-header>
+      <mat-card-title>{{movie.title}}</mat-card-title>
+      <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="poster" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
+    <mat-card-content>
+      <p class="description">
+        {{movie.description}}
+      </p>
+      <p *ngIf="reviews.length">{{movieTexts.reviews[selectedLang]}}</p>
+      <mat-divider></mat-divider>
+      <div class="review" *ngFor="let review of reviews">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p>{{movieTexts.user[selectedLang]}}: {{review.userId}}</p>
+          <span class="fill-remaining-space"></span>
+          <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
+            stars
+          </i>
         </div>
-      </mat-card-content>
-      <mat-card-actions *ngIf="user">
-        <button mat-raised-button class="button-mid" color="primary" *ngIf="user.role !== 'admin'" (click)="openBottomSheet(null)">{{movieTexts.add[selectedLang]}}</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+        <p class="review-text">
+          {{review.comment}}
+        </p>
+        <mat-card-actions *ngIf="user">
+          <button mat-raised-button class="button-mid"color="accent" *ngIf="review.userId === user.id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
+          <button mat-raised-button class="button" color="warn" *ngIf="review.userId === user.id || user.role === 'admin'" (click)="deleteReview(review.id)">{{movieTexts.delete[selectedLang]}}</button>
+        </mat-card-actions>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="user">
+      <button mat-raised-button class="button-mid" color="primary" *ngIf="user.role !== 'admin'" (click)="openBottomSheet(null)">{{movieTexts.add[selectedLang]}}</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

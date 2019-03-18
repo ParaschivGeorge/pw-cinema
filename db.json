@@ -65,6 +65,14 @@
       "photoUrl": "https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_UX182_CR0,0,182,268_AL_.jpg",
       "type": "action",
       "id": 2
+    },
+    {
+      "releaseDate": "14.10.1994",
+      "title": " The Shawshank Redemption",
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "photoUrl": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      "type": "drama",
+      "id": 3
     }
   ],
   "reviews": [
@@ -74,6 +82,13 @@
       "rating": 5,
       "comment": "'Avengers Assemble' ('The Avengers') is a truly enjoyable superhero film that lives up to its hype and creates a story that allows for four of the greatest superheroes to connect in this mega-blockbuster extravaganza. Joss Whedon has created one of the most action-packed Marvel films to have graced the screen, full of humour, thrills and a great cast of characters, all of which impel this visual effects-driven spectacle. Whilst I had the great opportunity to watch this epic in the cinema in 3D, the film is equally as stunning on an average television set, with the final battle between the Avengers and Loki's army being one of the most spectacular scenes in a superhero movie. An impressive and remarkable fantastical superhero flick from Whedon.",
       "id": 1
+    },
+    {
+      "userId": 3,
+      "movieId": "2",
+      "rating": 3,
+      "comment": "So I was hoping this would be a great movie so I could write a review telling misogynists to shut up and that it's fantastic to have a strong female superhero as a leading character. Alas, in that regard, Wonder Woman did a lot better as a movie as a whole. The acting is not that great between Brie Larson poor performance and the prosthetic/GCI on Samuel L. Jackson to make him look younger but also give him a wooden appearance. There are very obvious plot holes (like, wait, how did they know to do that?) and the pacing is very uneven; there are a few parts I didn't feel engaged at all. On the plus side it does fairly well as an origin story though, and there is that Marvel level of polish in special effects and editing. But all in all, it might be a necessary introduction to Captain Marvel for Avengers End Game, but it is probably the weakest MCU movie to date.",
+      "id": 2
     }
   ]
 }

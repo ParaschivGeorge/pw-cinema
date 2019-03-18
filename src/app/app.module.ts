@@ -18,6 +18,8 @@ import { MovieComponent } from './movies/movie/movie.component';
 import { SafeUrlPipe } from './utils/safe-url.pipe';
 import { MovieBsComponent } from './movies/movie-bs/movie-bs.component';
 import { ReviewBsComponent } from './movies/movie/review-bs/review-bs.component';
+import { UserComponent } from './users/user/user.component';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ReviewBsComponent } from './movies/movie/review-bs/review-bs.component'
     MovieComponent,
     SafeUrlPipe,
     MovieBsComponent,
-    ReviewBsComponent
+    ReviewBsComponent,
+    UserComponent
   ],
   entryComponents: [
     MovieBsComponent,
@@ -45,7 +48,9 @@ import { ReviewBsComponent } from './movies/movie/review-bs/review-bs.component'
     DragDropModule,
     HttpClientModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
+    WavesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

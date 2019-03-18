@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
           console.log(data);
           if (data.length > 0) {
             this.usersService.user = data[0];
+            localStorage.setItem('connectedUsers', localStorage.getItem('connectedUsers') ? (parseInt(localStorage.getItem('connectedUsers')) + 1).toString() : '1');
             this.router.navigate(['movies']);
           } else {
             this.loginForm.get('password').setErrors(['invalid']);

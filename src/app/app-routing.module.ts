@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { MovieComponent } from './movies/movie/movie.component';
+import { UserComponent } from './users/user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -16,7 +17,11 @@ const routes: Routes = [
     { path: '', component: MoviesComponent},
     { path: ':id', component: MovieComponent},
   ]},
-  { path: 'users', component: UsersComponent},
+  { path: 'users',
+   children: [
+    { path: '', component: UsersComponent},
+    { path: ':id', component: UserComponent},
+  ]},
   { path: 'not-found', component: ErrorPageComponent},
   { path: '**', redirectTo: 'not-found' } // this should always be the last route!
   /* { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }

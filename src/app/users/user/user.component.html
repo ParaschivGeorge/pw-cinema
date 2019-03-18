@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <mat-card class="movie-card" *ngIf="user">
+      <mat-card-header>
+        <mat-card-title>{{userTexts.firstname[selectedLang]}}: {{user.firstName}}</mat-card-title>
+        <mat-card-title>{{userTexts.lastname[selectedLang]}}: {{user.lastName}}</mat-card-title>
+        <mat-card-title>{{userTexts.email[selectedLang]}}: {{user.email}}</mat-card-title>
+        <mat-card-title>{{userTexts.nrReviews[selectedLang]}}: {{reviews.length}}</mat-card-title>
+        <mat-card-title *ngIf="loggedInUser && loggedInUser.role === 'admin'">{{userTexts.status[selectedLang]}}: Active</mat-card-title>
+        <mat-card-title *ngIf="loggedInUser && loggedInUser.role === 'admin'">{{userTexts.prefCategories[selectedLang]}}: action & adventure.</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p *ngIf="reviews.length">{{userTexts.reviews[selectedLang]}}</p>
+        <mat-divider></mat-divider>
+        <div class="review" *ngFor="let review of reviews">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <p>{{userTexts.movie[selectedLang]}}: {{review.movieId}}</p>
+            <span class="fill-remaining-space"></span>
+            <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
+              stars
+            </i>
+          </div>
+          <p class="review-text">
+            {{review.comment}}
+          </p>
+          <mat-card-actions *ngIf="loggedInUser && user.id === loggedInUser.id">
+            <button mat-raised-button class="button-mid"color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
+            <button mat-raised-button class="button" color="warn" (click)="deleteReview(review.id)">{{userTexts.delete[selectedLang]}}</button>
+          </mat-card-actions>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>

@@ -1,0 +1,51 @@
+span.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.movie-card {
+    max-width: 500px;
+    margin: 5vh auto;
+    padding: 25px 0;
+}
+
+.description {
+    font-size: 15px;
+    text-align: justify;
+    padding: 0 20px;
+}
+
+.poster {
+    margin: 0 auto;
+    max-height: 442px;
+    max-width: 300px;
+}
+
+.admin-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+}
+
+.button {
+    margin: 0 !important;
+}
+
+.button-mid {
+    margin: 0 3px !important;
+}
+
+.review {
+    text-align: justify;
+    margin: 10px 30px;
+    padding-top: 10px;
+}
+
+.review-text {
+    font-size: 15px;
+    text-align: justify;
+    padding: 20px 0;
+}
+
+mat-card-title {
+    text-align: left;
+}

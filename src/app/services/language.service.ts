@@ -7,7 +7,7 @@ export class LanguageService {
 
   public selectedLang = 0;
   public navbarTexts = {
-    hello: ['Hello', 'Salut'],
+    hello: ['Hello', 'Buna'],
     login: ['Login', 'Autentificare'],
     register: ['Register', 'Inregistrare'],
     movies: ['Movies', 'Filme'],
@@ -45,12 +45,36 @@ export class LanguageService {
     reviews: ['Reviews', 'Recenzii'],
     edit: ['Edit', 'Modifica'],
     delete: ['Delete', 'Sterge'],
-    add: ['Add a review', 'Adauga o recenzie']
+    add: ['Add a review', 'Adauga o recenzie'],
+    user: ['User', 'Utilizator']
   };
   public reviewBsTexts = {
     rating: ['Rating', 'Evaluare'],
     comment: ['Comment', 'Comentariu'],
     submit: ['Submit', 'Confirma']
+  };
+  public usersTexts = {
+    yourProfile: ['Your profile', 'Profilul tau'],
+    top5: ['Top 5 users', 'Top 5 utilizatori'],
+    mostReviews: ['most reviews', 'cele mai multe recenzii'],
+    reviews: ['reviews', 'recenzii'],
+    connectedUsers: ['Connected users', 'Utilizatori conectati'],
+    daysAgo: ['days ago', 'zile in urma'],
+    dayAgo: ['day ago', 'zi in urma'],
+    allUsers: ['All users', 'Toti utilizatorii'],
+    users5days: ['Users in the last 5 days', 'Utilizatori in ultimele 5 zile']
+  };
+  public userTexts = {
+    firstname: ['Firstname', 'Prenume'],
+    lastname: ['Lastname', 'Nume'],
+    email: ['Email', 'Email'],
+    nrReviews: ['Number of reviews', 'Numar de recenzii'],
+    reviews: ['Reviews', 'Recenzii'],
+    movie: ['Movie', 'Film'],
+    status: ['Status', 'Status'],
+    prefCategories: ['Preferred categories', 'Categorii preferate'],
+    edit: ['Edit', 'Modifica'],
+    delete: ['Delete', 'Sterge'],
   };
 
   constructor() { }

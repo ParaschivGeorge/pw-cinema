@@ -20,6 +20,12 @@ export class UsersService {
     return this.http.request<User[]>('get', environment.apiUrl + '/users', {params: queryParams});
   }
 
+  getAll(): Observable<User[]> {
+    const queryParams = new HttpParams().set('role', 'user');
+
+    return this.http.request<User[]>('get', environment.apiUrl + '/users', {params: queryParams});
+  }
+
   register(email: string, password: string, firstName: string, lastName: string): Observable<User> {
     return this.http.request<User>('post', environment.apiUrl + '/users', {body: {
       email: email,

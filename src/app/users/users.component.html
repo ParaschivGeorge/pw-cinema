@@ -1,3 +1,46 @@
-<p>
-  users works!
-</p>
+<div class="container-fluid">
+  <mat-card class="top-users-card">
+    <mat-card-actions *ngIf="user">
+      <button mat-raised-button color="primary" (click)="goToUserProfile(user)">{{usersTexts.yourProfile[selectedLang]}}</button>
+    </mat-card-actions>
+    <mat-card-header>
+      <mat-card-title>{{usersTexts.top5[selectedLang]}}</mat-card-title>
+      <mat-card-subtitle>({{usersTexts.mostReviews[selectedLang]}})</mat-card-subtitle>
+    </mat-card-header>    
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <mat-list>
+        <div *ngFor="let user of getTopUsers()" class="user-list">
+          <mat-list-item (click)="goToUserProfile(user)">{{user.lastName}} {{user.firstName}} - {{getNumberOfReviews(user)}} {{usersTexts.reviews[selectedLang]}}</mat-list-item>
+        </div>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-header>
+      <mat-card-title>{{usersTexts.connectedUsers[selectedLang]}}: {{onlineUsers()}}</mat-card-title>
+    </mat-card-header>    
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="users-chart">
+        <canvas mdbChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-card-title class="all-users-title">{{usersTexts.allUsers[selectedLang]}}</mat-card-title>
+      <mat-card-content>
+        <mat-list>
+          <div *ngFor="let user of getTopUsers()" class="user-list">
+            <mat-list-item (click)="goToUserProfile(user)">{{user.lastName}} {{user.firstName}} - {{user.email}}</mat-list-item>
+          </div>
+        </mat-list>
+      </mat-card-content>
+    </mat-card-content>
+  </mat-card>
+</div>

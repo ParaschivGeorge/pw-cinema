@@ -18,6 +18,7 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     this.usersService.user = null;
+    localStorage.setItem('connectedUsers', localStorage.getItem('connectedUsers') ? (parseInt(localStorage.getItem('connectedUsers')) - 1).toString() : '0');
   }
 
   get user() {
