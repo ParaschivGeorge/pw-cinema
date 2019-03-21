@@ -1,24 +1,36 @@
 <div class="container-fluid">
-  <mat-card class="admin-card" *ngIf="user && user.role === 'admin'">
-    <mat-card-actions>
+  <mat-card class="movie-card" fxHide.lt-sm="true">
+    <mat-card-actions *ngIf="user && user.role === 'admin'">
       <button mat-raised-button color="primary" (click)="openBottomSheet(null)">{{moviesTexts.add[selectedLang]}}</button>
     </mat-card-actions>
+    <div *ngFor="let movie of movies"  fxLayout="row" fxLayoutAlign="space-around center" class="movie-div">
+      <mat-card-header>
+        <mat-card-title>{{movie.title}}</mat-card-title>
+        <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie.id)">{{moviesTexts.reviews[selectedLang]}}</button>
+        <button mat-raised-button class="button-mid"color="accent" *ngIf="user && user.role === 'admin'" (click)="openBottomSheet(movie)">{{moviesTexts.edit[selectedLang]}}</button>
+        <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie.id)">{{moviesTexts.delete[selectedLang]}}</button>
+      </mat-card-actions>
+    </div>
   </mat-card>
-  <mat-card class="movie-card" *ngFor="let movie of movies">
-    <mat-card-header>
-      <mat-card-title>{{movie.title}}</mat-card-title>
-      <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
-    </mat-card-header>
-    <img class="poster" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
-    <mat-card-content>
-      <p class="description">
-        {{movie.description}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie.id)">{{moviesTexts.reviews[selectedLang]}}</button>
-      <button mat-raised-button class="button-mid"color="accent" *ngIf="user && user.role === 'admin'" (click)="openBottomSheet(movie)">{{moviesTexts.edit[selectedLang]}}</button>
-      <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie.id)">{{moviesTexts.delete[selectedLang]}}</button>
+
+  
+  <mat-card class="movie-card" fxHide.gt-sm="true" fxHide.sm="true">
+    <mat-card-actions *ngIf="user && user.role === 'admin'">
+      <button mat-raised-button color="primary" (click)="openBottomSheet(null)">{{moviesTexts.add[selectedLang]}}</button>
     </mat-card-actions>
+    <div *ngFor="let movie of movies" class="movie-div">
+      <mat-card-header>
+        <mat-card-title>{{movie.title}}</mat-card-title>
+        <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie.id)">{{moviesTexts.reviews[selectedLang]}}</button>
+        <button mat-raised-button class="button-mid"color="accent" *ngIf="user && user.role === 'admin'" (click)="openBottomSheet(movie)">{{moviesTexts.edit[selectedLang]}}</button>
+        <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie.id)">{{moviesTexts.delete[selectedLang]}}</button>
+      </mat-card-actions>
+    </div>
   </mat-card>
 </div>
