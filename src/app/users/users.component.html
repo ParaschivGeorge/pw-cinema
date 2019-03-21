@@ -1,23 +1,23 @@
 <div class="container-fluid">
-  <mat-card class="top-users-card">
+  <!-- mobile -->
+  <mat-card class="users-card" fxHide.gt-sm="true" fxHide.sm="true">
+    <mat-card-header>
+      <mat-card-title>{{usersTexts.connectedUsers[selectedLang]}}: {{onlineUsers()}}</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>    
     <mat-card-actions *ngIf="user">
       <button mat-raised-button color="primary" (click)="goToUserProfile(user)">{{usersTexts.yourProfile[selectedLang]}}</button>
     </mat-card-actions>
     <mat-card-header>
-      <mat-card-title>{{usersTexts.top5[selectedLang]}}</mat-card-title>
+      <mat-card-title class="all-users-title">{{usersTexts.top5[selectedLang]}}</mat-card-title>
       <mat-card-subtitle>({{usersTexts.mostReviews[selectedLang]}})</mat-card-subtitle>
-    </mat-card-header>    
+    </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
-      <mat-list>
-        <div *ngFor="let user of getTopUsers()" class="user-list">
-          <mat-list-item (click)="goToUserProfile(user)">{{user.lastName}} {{user.firstName}} - {{getNumberOfReviews(user)}} {{usersTexts.reviews[selectedLang]}}</mat-list-item>
-        </div>
-      </mat-list>
+      <div *ngFor="let user of getTopUsers()" class="user-list">
+        <p (click)="goToUserProfile(user)" class="user-list-item">{{user.lastName}} {{user.firstName}} - {{getNumberOfReviews(user)}} {{usersTexts.reviews[selectedLang]}}</p>
+      </div>
     </mat-card-content>
-    <mat-card-header>
-      <mat-card-title>{{usersTexts.connectedUsers[selectedLang]}}: {{onlineUsers()}}</mat-card-title>
-    </mat-card-header>    
     <mat-divider></mat-divider>
     <mat-card-content>
       <div class="users-chart">
@@ -33,14 +33,66 @@
         </canvas>
       </div>
       <mat-divider></mat-divider>
-      <mat-card-title class="all-users-title">{{usersTexts.allUsers[selectedLang]}}</mat-card-title>
+      <mat-card-header>
+        <mat-card-title class="all-users-title">{{usersTexts.allUsers[selectedLang]}}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
       <mat-card-content>
-        <mat-list>
-          <div *ngFor="let user of getTopUsers()" class="user-list">
-            <mat-list-item (click)="goToUserProfile(user)">{{user.lastName}} {{user.firstName}} - {{user.email}}</mat-list-item>
-          </div>
-        </mat-list>
+        <div *ngFor="let user of getTopUsers()" class="user-list">
+          <p (click)="goToUserProfile(user)" class="user-list-item">{{user.lastName}} {{user.firstName}} - {{user.email}}</p>
+        </div>
       </mat-card-content>
+    </mat-card-content>
+  </mat-card>
+  
+  <!-- desktop -->
+  <mat-card class="users-card" fxHide.lt-sm="true">    
+    <div div fxLayout="row" fxLayoutAlign="space-between stretch" >
+
+      <div class="desktop-users-data">
+        <mat-card-header>
+          <mat-card-title>{{usersTexts.connectedUsers[selectedLang]}}: {{onlineUsers()}}</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-header>
+          <mat-card-title class="all-users-title">{{usersTexts.top5[selectedLang]}}</mat-card-title>
+          <mat-card-subtitle>({{usersTexts.mostReviews[selectedLang]}})</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <div *ngFor="let user of getTopUsers()" class="user-list">
+            <p (click)="goToUserProfile(user)" class="user-list-item">{{user.lastName}} {{user.firstName}} - {{getNumberOfReviews(user)}} {{usersTexts.reviews[selectedLang]}}</p>
+          </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions *ngIf="user">
+          <button mat-raised-button color="primary" (click)="goToUserProfile(user)">{{usersTexts.yourProfile[selectedLang]}}</button>
+        </mat-card-actions>
+      </div>
+
+      <div class="users-chart">
+        <canvas mdbChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </div>
+    
+    <mat-divider></mat-divider>
+    <mat-card-header>
+      <mat-card-title class="all-users-title">{{usersTexts.allUsers[selectedLang]}}</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div *ngFor="let user of getTopUsers()" class="user-list">
+        <p (click)="goToUserProfile(user)" class="user-list-item">{{user.lastName}} {{user.firstName}} - {{user.email}}</p>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

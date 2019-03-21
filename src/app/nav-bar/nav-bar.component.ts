@@ -35,9 +35,11 @@ export class NavBarComponent implements OnInit {
 
   selectRo() {
     this.langService.selectedLang = 1;
+    this.langService.langSubject.next(true);
   }
 
   selectUS() {
     this.langService.selectedLang = 0;
+    this.langService.langSubject.next(true);
   }
 }

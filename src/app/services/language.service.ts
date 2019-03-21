@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
 
+  public langSubject = new Subject<boolean>();
   public selectedLang = 0;
   public navbarTexts = {
     hello: ['Hello', 'Buna'],

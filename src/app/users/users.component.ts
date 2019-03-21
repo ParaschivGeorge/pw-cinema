@@ -20,7 +20,14 @@ export class UsersComponent implements OnInit {
     private usersService: UsersService,
     private reviewsService: ReviewsService,
     private router: Router,
-    private langService: LanguageService) { }
+    private langService: LanguageService) {
+      this.langService.langSubject.asObservable().subscribe(data => {
+        this.chartLabels = ['5 ' + this.usersTexts.daysAgo[this.selectedLang], '4 ' + this.usersTexts.daysAgo[this.selectedLang], '3 ' + this.usersTexts.daysAgo[this.selectedLang], '2 ' + this.usersTexts.daysAgo[this.selectedLang], '1 ' + this.usersTexts.dayAgo[this.selectedLang]];
+        this.chartDatasets = [
+          { data: [65, 59, 80, 81, 56], label: this.usersTexts.users5days[this.selectedLang] }
+        ];
+      });
+     }
 
   public chartType: string = 'line';
   public chartDatasets: Array<any> = [

@@ -1,12 +1,20 @@
 .users-chart {
     display: block;
     background: white;
+    z-index: 500;
+    height: 100%;
+    min-width: 40vw;
 }
 
-.top-users-card {
-    max-width: 500px;
+.desktop-users-data {
+    max-width: 40vw;
+}
+
+.users-card {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 25px 0;
+    min-height: 85vh;
 }
 
 .all-users {
@@ -15,8 +23,13 @@
 }
 
 .user-list {
-    font-size: 20px;
     cursor: pointer;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+.user-list-item {
+    font-size: 15px;
 }
 
 .all-users-title {
