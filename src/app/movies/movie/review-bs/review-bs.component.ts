@@ -43,7 +43,7 @@ export class ReviewBsComponent implements OnInit {
       if (this.review !== null) {
         this.reviewsService.update(
           this.review.id,
-          this.user.id,
+          this.user._id,
           this.reviewsService.movieId,
           this.reviewForm.get('rating').value,
           this.reviewForm.get('comment').value).subscribe(
@@ -57,7 +57,7 @@ export class ReviewBsComponent implements OnInit {
           );
       } else {
         this.reviewsService.create(
-          this.user.id,
+          this.user._id,
           this.reviewsService.movieId,
           this.reviewForm.get('rating').value,
           this.reviewForm.get('comment').value).subscribe(

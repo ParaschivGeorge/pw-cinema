@@ -1,5 +1,5 @@
 export interface Review {
-    id: number;
+    _id: number;
     userId: number;
     movieId: number;
     rating: number;

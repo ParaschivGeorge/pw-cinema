@@ -45,10 +45,10 @@ export class MovieBsComponent implements OnInit {
     if (this.movieForm.valid) {
       const releaseDate = this.movieForm.get('releaseDate').value;
       const datestring = releaseDate.getDate()  + '.' + (releaseDate.getMonth() + 1) + '.' + releaseDate.getFullYear();
-      
+
       if (this.movie !== null) {
         this.moviesService.update(
-          this.movie.id,
+          this.movie._id,
           datestring,
           this.movieForm.get('title').value,
           this.movieForm.get('description').value,

@@ -70,8 +70,8 @@ export class UsersComponent implements OnInit {
   getTopUsers(): User[] {
     if (this.users.length  && this.reviews.length) {
       return this.users.sort((a, b) => {
-        let ra = this.reviews.filter(r => r.userId === a.id).length;
-        let rb = this.reviews.filter(r => r.userId === b.id).length;
+        let ra = this.reviews.filter(r => r.userId === a._id).length;
+        let rb = this.reviews.filter(r => r.userId === b._id).length;
         return rb - ra;
       }).slice(0, 5);
     }
@@ -79,7 +79,7 @@ export class UsersComponent implements OnInit {
   }
 
   getNumberOfReviews(user: User) {
-    return this.reviews.filter(r => r.userId === user.id).length;
+    return this.reviews.filter(r => r.userId === user._id).length;
   }
 
   onlineUsers(): string {
@@ -87,7 +87,7 @@ export class UsersComponent implements OnInit {
   }
 
   goToUserProfile(user: User) {
-    this.router.navigate(['users', user.id]);
+    this.router.navigate(['users', user._id]);
   }
 
   get user() {

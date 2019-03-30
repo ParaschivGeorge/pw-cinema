@@ -9,14 +9,14 @@
         <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie.id)">{{moviesTexts.reviews[selectedLang]}}</button>
+        <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie._id)">{{moviesTexts.reviews[selectedLang]}}</button>
         <button mat-raised-button class="button-mid"color="accent" *ngIf="user && user.role === 'admin'" (click)="openBottomSheet(movie)">{{moviesTexts.edit[selectedLang]}}</button>
-        <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie.id)">{{moviesTexts.delete[selectedLang]}}</button>
+        <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie._id)">{{moviesTexts.delete[selectedLang]}}</button>
       </mat-card-actions>
     </div>
   </mat-card>
 
-  
+
   <mat-card class="movie-card" fxHide.gt-sm="true" fxHide.sm="true">
     <mat-card-actions *ngIf="user && user.role === 'admin'">
       <button mat-raised-button color="primary" (click)="openBottomSheet(null)">{{moviesTexts.add[selectedLang]}}</button>
@@ -27,9 +27,9 @@
         <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie.id)">{{moviesTexts.reviews[selectedLang]}}</button>
+        <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie._id)">{{moviesTexts.reviews[selectedLang]}}</button>
         <button mat-raised-button class="button-mid"color="accent" *ngIf="user && user.role === 'admin'" (click)="openBottomSheet(movie)">{{moviesTexts.edit[selectedLang]}}</button>
-        <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie.id)">{{moviesTexts.delete[selectedLang]}}</button>
+        <button mat-raised-button class="button" color="warn" *ngIf="user && user.role === 'admin'" (click)="deleteMovie(movie._id)">{{moviesTexts.delete[selectedLang]}}</button>
       </mat-card-actions>
     </div>
   </mat-card>

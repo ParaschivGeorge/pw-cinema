@@ -22,9 +22,9 @@
           <p class="review-text">
             {{review.comment}}
           </p>
-          <mat-card-actions *ngIf="loggedInUser && user.id === loggedInUser.id">
+          <mat-card-actions *ngIf="loggedInUser && user._id === loggedInUser._id">
             <button mat-raised-button class="button-mid"color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
-            <button mat-raised-button class="button" color="warn" (click)="deleteReview(review.id)">{{userTexts.delete[selectedLang]}}</button>
+            <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
           </mat-card-actions>
           <mat-divider></mat-divider>
         </div>

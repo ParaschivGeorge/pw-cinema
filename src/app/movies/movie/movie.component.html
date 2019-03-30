@@ -27,8 +27,8 @@
           {{review.comment}}
         </p>
         <mat-card-actions *ngIf="user">
-          <button mat-raised-button class="button-mid"color="accent" *ngIf="review.userId === user.id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
-          <button mat-raised-button class="button" color="warn" *ngIf="review.userId === user.id || user.role === 'admin'" (click)="deleteReview(review.id)">{{movieTexts.delete[selectedLang]}}</button>
+          <button mat-raised-button class="button-mid" color="accent" *ngIf="review.userId === user._id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
+          <button mat-raised-button class="button" color="warn" *ngIf="review.userId === user._id || user.role === 'admin'" (click)="deleteReview(review._id)">{{movieTexts.delete[selectedLang]}}</button>
         </mat-card-actions>
         <mat-divider></mat-divider>
       </div>
@@ -67,8 +67,8 @@
           {{review.comment}}
         </p>
         <mat-card-actions *ngIf="user">
-          <button mat-raised-button class="button-mid"color="accent" *ngIf="review.userId === user.id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
-          <button mat-raised-button class="button" color="warn" *ngIf="review.userId === user.id || user.role === 'admin'" (click)="deleteReview(review.id)">{{movieTexts.delete[selectedLang]}}</button>
+          <button mat-raised-button class="button-mid" color="accent" *ngIf="review.userId === user._id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
+          <button mat-raised-button class="button" color="warn" *ngIf="review.userId === user._id || user.role === 'admin'" (click)="deleteReview(review._id)">{{movieTexts.delete[selectedLang]}}</button>
         </mat-card-actions>
         <mat-divider></mat-divider>
       </div>
