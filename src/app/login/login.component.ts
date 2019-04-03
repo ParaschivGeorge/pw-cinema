@@ -5,6 +5,7 @@ import { UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { LanguageService } from '../services/language.service';
+import * as jwt_decode from "jwt-decode";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -50,16 +51,10 @@ export class LoginComponent implements OnInit {
         this.loginForm.get('email').value,
         this.loginForm.get('password').value
       ).subscribe(
-        data => {
-          console.log(data);
-          if (data.length > 0) {
-            this.usersService.user = data[0];
-            localStorage.setItem('connectedUsers', localStorage.getItem('connectedUsers') ? (parseInt(localStorage.getItem('connectedUsers')) + 1).toString() : '1');
-            this.router.navigate(['movies']);
-          } else {
-            this.loginForm.get('password').setErrors(['invalid']);
-            this.loginForm.get('email').setErrors(['invalid']);
-          }
+        token => {
+          this.usersService.token = token;
+          this.usersService.user = jwt_decode(token).sub;
+          this.router.navigate(['movies']);
         },
         error => {
           console.log(error);

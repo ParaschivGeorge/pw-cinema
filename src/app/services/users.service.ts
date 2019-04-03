@@ -10,14 +10,13 @@ import { User } from '../models/user';
 export class UsersService {
 
   public user: User = null;
+  public token: string;
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<User[]> {
-    let queryParams = new HttpParams().set('email', email);
-    queryParams = queryParams.append('password', password);
+  login(email: string, password: string): Observable<string> {
 
-    return this.http.request<User[]>('get', environment.apiUrl + '/users', {params: queryParams});
+    return this.http.request<string>('post', environment.apiUrl + '/users/auth/login', {body: {email: email, password: password}});
   }
 
   getAll(): Observable<User[]> {
@@ -27,7 +26,7 @@ export class UsersService {
   }
 
   register(email: string, password: string, firstName: string, lastName: string): Observable<User> {
-    return this.http.request<User>('post', environment.apiUrl + '/users', {body: {
+    return this.http.request<User>('post', environment.apiUrl + '/users/auth/register', {body: {
       email: email,
       password: password,
       role: 'user',

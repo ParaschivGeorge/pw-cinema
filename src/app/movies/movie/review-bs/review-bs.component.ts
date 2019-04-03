@@ -42,7 +42,7 @@ export class ReviewBsComponent implements OnInit {
     if (this.reviewForm.valid) {
       if (this.review !== null) {
         this.reviewsService.update(
-          this.review.id,
+          this.review._id,
           this.user._id,
           this.reviewsService.movieId,
           this.reviewForm.get('rating').value,

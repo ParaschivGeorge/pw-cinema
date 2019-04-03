@@ -64,9 +64,14 @@ export class MovieComponent implements OnInit {
     return [...Array.from(Array(n).keys())];
   }
 
+  addedReview(): boolean {
+    return this.reviews.some(r => r.user._id === this.user._id);
+  }
+
   get user(): User {
     return this.usersService.user;
   }
+
 
   openBottomSheet(review: Review) {
     this.reviewsService.review = review;

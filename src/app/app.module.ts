@@ -21,6 +21,11 @@ import { ReviewBsComponent } from './movies/movie/review-bs/review-bs.component'
 import { UserComponent } from './users/user/user.component';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+
+const config: SocketIoConfig = { url: environment.apiUrl, options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +55,8 @@ import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
     FlexLayoutModule,
     FormsModule,
     ChartsModule,
-    WavesModule
+    WavesModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

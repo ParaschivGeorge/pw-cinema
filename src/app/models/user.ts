@@ -5,4 +5,5 @@ export interface User {
     role: string; // ENUM: admin, user
     firstName: string;
     lastName: string;
+    loggedInDays: Date[];
 }

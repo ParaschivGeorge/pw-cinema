@@ -44,6 +44,16 @@ export class UserComponent implements OnInit {
     this.getReviews();
   }
 
+  getStatus(): string {
+    for (let index = 7; index >= 1; index--) {
+      const dateIdaysAgo = new Date(new Date().setDate(new Date().getDate() - index)).setHours(0, 0, 0, 0);
+      if (this.user.loggedInDays.some(d => new Date(d).getTime() === dateIdaysAgo)) {
+        return 'Active';
+      }
+    }
+    return 'Inactive';
+  }
+
   getReviews() {
     this.reviewsService.getAll(null, this.route.snapshot.params['id']).subscribe(
       reviews => {
@@ -56,16 +66,32 @@ export class UserComponent implements OnInit {
     );
   }
 
+  getPreferredCategories() {
+    if (this.reviews) {
+      const movieTypes = [];
+      this.reviews.forEach(review => {
+        movieTypes.push(review.movie.type);
+      });
+      return movieTypes.sort((a,b) =>
+            movieTypes.filter(v => v === a).length
+          - movieTypes.filter(v => v === b).length
+      ).slice(0, 3);
+    }
+
+    return null;
+  }
+
   arrayTwo(n: number): number[] {
     return [...Array.from(Array(n).keys())];
   }
-  
+
   get loggedInUser() {
     return this.usersService.user;
   } 
   
   openBottomSheet(review: Review) {
     this.reviewsService.review = review;
+    this.reviewsService.movieId = review.movie._id;
     this.bottomSheet.open(ReviewBsComponent);
   }
 

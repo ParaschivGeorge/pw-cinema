@@ -18,10 +18,10 @@ export class ReviewsService {
   getAll(movieId: number, userId: number): Observable<Review[]> {
     let queryParams = new HttpParams();
     if (movieId !== null) {
-      queryParams = queryParams.set('movieId', movieId.toString());
+      queryParams = queryParams.set('movie', movieId.toString());
     }
     if (userId !== null) {
-      queryParams = queryParams.set('userId', userId.toString());
+      queryParams = queryParams.set('user', userId.toString());
     }
     return this.http.request<Review[]>('get', environment.apiUrl + '/reviews', {params: queryParams});
   }
@@ -36,8 +36,8 @@ export class ReviewsService {
 
   create(userId: number, movieId: number, rating: number, comment: string): Observable<Review> {
     return this.http.request<Review>('post', environment.apiUrl + '/reviews', {body: {
-      userId: userId,
-      movieId: movieId,
+      user: userId,
+      movie: movieId,
       rating: rating,
       comment: comment
     }});
@@ -45,8 +45,8 @@ export class ReviewsService {
 
   update(id: number, userId: number, movieId: number, rating: number, comment: string): Observable<Review> {
     return this.http.request<Review>('put', environment.apiUrl + '/reviews/' + id, {body: {
-      userId: userId,
-      movieId: movieId,
+      user: userId,
+      movie: movieId,
       rating: rating,
       comment: comment
     }});
