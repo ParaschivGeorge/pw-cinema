@@ -1,7 +1,6 @@
 <div class="container-fluid">
 <!-- mobile -->
   <mat-card class="movie-card" *ngIf="movie" fxHide.gt-sm="true">
-    <mat-card-title class="title">Movies</mat-card-title>
     <mat-card-header class="movie-card-header-mobile">
       <div>
         <mat-card-title class="movie-title-mobile">{{movie.title}}</mat-card-title>
@@ -55,7 +54,6 @@
 
 <!-- desktop -->
   <mat-card class="movie-card" *ngIf="movie" fxHide.lt-sm="true" fxHide.sm="true">  
-    <mat-card-title class="title">Movies</mat-card-title>  
     <mat-card-header class="movie-card-header-desktop">
       <div>
         <mat-card-title class="movie-title-desktop">{{movie.title}}</mat-card-title>

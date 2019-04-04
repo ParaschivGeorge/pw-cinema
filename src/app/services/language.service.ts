@@ -35,7 +35,8 @@ export class LanguageService {
     reviews: ['Reviews', 'Recenzii'],
     edit: ['Edit', 'Modifica'],
     delete: ['Delete', 'Sterge'],
-    filter: ['Filter', 'Filtreaza']
+    filter: ['Filter', 'Filtreaza'],
+    movies: ['Movies', 'Filme']
   };
   public moviesBsTexts = {
     title: ['Title', 'Titlu'],
@@ -71,7 +72,8 @@ export class LanguageService {
     fullname: ['Full name', 'Nume'],
     email: ['Email', 'Email'],
     filter: ['Filter', 'Filtreaza'],
-    noReviews: ['No. reviews', 'Nr. recenzii']
+    noReviews: ['No. reviews', 'Nr. recenzii'],
+    users: ['Users', 'Utilizatori']
   };
   public userTexts = {
     firstname: ['First name', 'Prenume'],
