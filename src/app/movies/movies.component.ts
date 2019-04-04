@@ -10,6 +10,7 @@ import {MatBottomSheet} from '@angular/material';
 import { MovieBsComponent } from './movie-bs/movie-bs.component';
 import { Subject } from 'rxjs';
 import { LanguageService } from '../services/language.service';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-movies',
@@ -19,6 +20,8 @@ import { LanguageService } from '../services/language.service';
 export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
+  query: string;
+  filteredMovies: Movie[] = [];
 
   constructor(
     private router: Router,
@@ -39,6 +42,8 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getAll(null, null).subscribe(
       movies => {
         this.movies = movies;
+        this.query = '';
+        this.filteredMovies = movies;
         console.log(movies);
       },
       error => {
@@ -46,6 +51,10 @@ export class MoviesComponent implements OnInit {
         this.movies = [];
       }
     );
+  }
+
+  filter() {
+    this.filteredMovies = this.movies.filter(movie => movie.title.toLowerCase().indexOf(this.query.toLowerCase()) > -1);
   }
 
   selectMovie(movieId: number) {

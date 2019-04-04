@@ -34,7 +34,8 @@ export class LanguageService {
     add: ['Add a movie', 'Adauga un film'],
     reviews: ['Reviews', 'Recenzii'],
     edit: ['Edit', 'Modifica'],
-    delete: ['Delete', 'Sterge']
+    delete: ['Delete', 'Sterge'],
+    filter: ['Filter', 'Filtreaza']
   };
   public moviesBsTexts = {
     title: ['Title', 'Titlu'],
