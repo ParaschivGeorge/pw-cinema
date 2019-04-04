@@ -7,7 +7,7 @@
         <mat-card-subtitle class="movie-subtitle-mobile">{{movie.releaseDate}} | {{movie.type}}</mat-card-subtitle>
       </div>
       <span class="fill-remaining-space"></span>
-      <div class="rating-mobile">
+      <div class="rating-mobile" *ngIf="reviews && reviews.length">
         {{getStars()}} / 5            
         <i class="rating-mobile material-icons">
           stars
@@ -31,7 +31,7 @@
         </button>
       </mat-card-actions>
     </mat-card-content>
-    <mat-card-content class="reviews-mobile">
+    <mat-card-content class="reviews-mobile" *ngIf="reviews && reviews.length">
       <p *ngIf="reviews.length" class="reviews-title-mobile">{{movieTexts.reviews[selectedLang]}}</p>
       <div class="review-mobile" *ngFor="let review of reviews">
         <div fxLayout="row" fxLayoutAlign="space-around center">
@@ -60,7 +60,7 @@
         <mat-card-subtitle class="movie-subtitle-desktop">{{movie.releaseDate}} | {{movie.type}}</mat-card-subtitle>
       </div>
       <span class="fill-remaining-space"></span>
-      <div class="rating-desktop">
+      <div class="rating-desktop" *ngIf="reviews && reviews.length">
         {{getStars()}} / 5            
         <i class="rating-desktop material-icons">
           stars
@@ -86,7 +86,7 @@
       </div>
       <img class="poster-desktop" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
     </div>
-    <mat-card-content class="reviews-desktop">
+    <mat-card-content class="reviews-desktop" *ngIf="reviews && reviews.length">
       <p *ngIf="reviews.length" class="reviews-title-desktop">{{movieTexts.reviews[selectedLang]}}</p>
       <div class="review-desktop" *ngFor="let review of reviews">
         <div fxLayout="row" fxLayoutAlign="space-around center">

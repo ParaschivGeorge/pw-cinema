@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <mat-card class="user-card" *ngIf="user" fxHide.gt-sm="true">
       <div class="user-profile">
-        <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
+        <p class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
         <table>
           <tr>
             <td>{{userTexts.firstname[selectedLang]}}</td>
@@ -30,7 +30,7 @@
         </table>
       </div>
 
-      <mat-card-content class="reviews-mobile">
+      <mat-card-content class="reviews-mobile" *ngIf="reviews && reviews.length">
         <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.reviews[selectedLang]}}</p>
         <div class="review-mobile" *ngFor="let review of reviews">
           <div fxLayout="row" fxLayoutAlign="space-around center">
@@ -53,7 +53,7 @@
     
     <mat-card class="user-card" *ngIf="user" fxHide.lt-sm="true" fxHide.sm="true">
       <div class="user-profile">
-        <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
+        <p class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
         <table>
           <tr>
             <td>{{userTexts.firstname[selectedLang]}}</td>
@@ -82,7 +82,7 @@
         </table>
       </div>
 
-      <mat-card-content class="reviews-desktop">
+      <mat-card-content class="reviews-desktop" *ngIf="reviews && reviews.length">
         <p *ngIf="reviews.length" class="reviews-title-desktop">{{userTexts.reviews[selectedLang]}}</p>
         <div class="review-desktop" *ngFor="let review of reviews">
           <div fxLayout="row" fxLayoutAlign="space-around center">
