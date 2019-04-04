@@ -7,9 +7,11 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { MovieComponent } from './movies/movie/movie.component';
 import { UserComponent } from './users/user/user.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomePageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'movies',

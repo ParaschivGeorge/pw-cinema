@@ -23,6 +23,7 @@ import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const config: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
@@ -39,7 +40,8 @@ const config: SocketIoConfig = { url: environment.apiUrl, options: {} };
     SafeUrlPipe,
     MovieBsComponent,
     ReviewBsComponent,
-    UserComponent
+    UserComponent,
+    HomePageComponent
   ],
   entryComponents: [
     MovieBsComponent,
