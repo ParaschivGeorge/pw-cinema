@@ -9,6 +9,82 @@ span.fill-remaining-space {
     min-height: 85vh;
 }
 
+.movie-card-desktop {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px 5vw;
+    min-height: 85vh;
+}
+
+.movie-card-header-desktop {
+    background: #1A237E;
+    color: #fff;
+    margin: 0;
+    padding-top: 20px;
+    padding-right: 30px;
+    border-radius: 5px;
+}
+
+.description-desktop {
+    font-size: 15px;
+    text-align: justify;
+    padding: 30px 60px;
+    border-top-left-radius: 5px;
+    border: 2px solid #000;
+    height: 100%;
+}
+
+.movie-title-desktop {
+    font-size: 40px;
+}
+
+.poster-desktop {
+    border-top-right-radius: 5px;
+    border: 2px solid #000;
+    margin: 0 auto;
+    max-height: 442px;
+    max-width: 300px;
+    z-index: 500;
+    width: auto;
+    height: auto;
+}
+
+.reviews-desktop {
+    margin-top: 30px;
+    padding: 20px 0;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.review-desktop {
+    text-align: justify;
+    margin: 10px 30px;
+    padding: 15px 20px;
+    background: #C5CAE9;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.reviews-title-desktop {    
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.review-text-desktop {
+    font-size: 15px;
+    text-align: justify;
+    padding: 20px 0;
+}
+.movie-subtitle-desktop {
+    font-size: 25px;
+    color: #E1F5FE;
+    text-align: left;
+}
+
+.rating {
+    font-size: 45px;
+}
+
 .description {
     font-size: 15px;
     text-align: justify;
@@ -16,6 +92,8 @@ span.fill-remaining-space {
 }
 
 .poster {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
     margin: 0 auto;
     max-height: 442px;
     max-width: 300px;

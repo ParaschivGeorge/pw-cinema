@@ -72,6 +72,18 @@ export class MovieComponent implements OnInit {
     return this.usersService.user;
   }
 
+  getStars(): number {
+    let sum = 0;
+    this.reviews.forEach(review => {
+      sum += review.rating;
+    });
+
+    return sum / this.reviews.length;
+  }
+
+  goToUserProfile(user: User) {
+    this.router.navigate(['users', user._id]);
+  }
 
   openBottomSheet(review: Review) {
     this.reviewsService.review = review;
