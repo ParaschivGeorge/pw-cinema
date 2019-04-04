@@ -75,7 +75,7 @@ export class UserComponent implements OnInit {
       return movieTypes.sort((a,b) =>
             movieTypes.filter(v => v === a).length
           - movieTypes.filter(v => v === b).length
-      ).slice(0, 3);
+      ).slice(0, 2);
     }
 
     return null;

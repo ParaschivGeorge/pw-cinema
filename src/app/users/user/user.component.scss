@@ -3,10 +3,10 @@ span.fill-remaining-space {
 }
 
 .user-card {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 25px 0;
-    min-height: 85vh;
+    padding: 25px 5vw;
+    min-height: 87vh;
 }
 
 .description {
@@ -49,4 +49,76 @@ span.fill-remaining-space {
 
 mat-card-title {
     text-align: left;
+}
+
+.review-mobile {
+    text-align: justify;
+    padding: 10px 2vw;
+    background: #C5CAE9;
+    border-radius: 5px;
+    border: 2px solid #000;    
+    min-width: 287px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.review-text-mobile {
+    font-size: 15px;
+    text-align: justify;
+    padding: 20px 0;
+}
+
+.reviews-title-mobile {
+    font-size: 30px;
+}
+
+.reviews-mobile {
+    margin: 20px auto;
+    padding: 0;
+}
+
+.reviews-desktop {
+    margin-top: 30px;
+    padding: 20px 0;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.review-desktop {
+    text-align: justify;
+    margin: 10px 30px;
+    padding: 15px 20px;
+    background: #C5CAE9;
+    border-radius: 5px;
+    border: 2px solid #000;
+    text-align: left;
+}
+
+.reviews-title-desktop {    
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.review-text-desktop {
+    font-size: 15px;
+    text-align: justify;
+    padding: 20px 0;
+}
+
+.user-profile {
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 100%;
+    overflow:hidden;
+    padding-top: 20px;
+}
+
+table {
+    text-align: left;
+    margin: 30px 5vw;
+    max-width: 80vw;
+}
+
+td {
+    padding: 5px 20px;
 }

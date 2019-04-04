@@ -1,32 +1,104 @@
 <div class="container-fluid">
-    <mat-card class="user-card" *ngIf="user">
-      <mat-card-header>
-        <mat-card-title>{{userTexts.firstname[selectedLang]}}: {{user.firstName}}</mat-card-title>
-        <mat-card-title>{{userTexts.lastname[selectedLang]}}: {{user.lastName}}</mat-card-title>
-        <mat-card-title>{{userTexts.email[selectedLang]}}: {{user.email}}</mat-card-title>
-        <mat-card-title>{{userTexts.nrReviews[selectedLang]}}: {{reviews.length}}</mat-card-title>
-        <mat-card-title *ngIf="loggedInUser && loggedInUser.role === 'admin'">{{userTexts.status[selectedLang]}}: {{getStatus()}}</mat-card-title>
-        <mat-card-title *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">{{userTexts.prefCategories[selectedLang]}}: {{getPreferredCategories()}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p *ngIf="reviews.length">{{userTexts.reviews[selectedLang]}}</p>
-        <mat-divider></mat-divider>
-        <div class="review" *ngFor="let review of reviews">
+    <mat-card class="user-card" *ngIf="user" fxHide.gt-sm="true">
+      <div class="user-profile">
+        <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
+        <table>
+          <tr>
+            <td>{{userTexts.firstname[selectedLang]}}</td>
+            <td>{{user.firstName}}</td>
+          </tr>
+          <tr>
+            <td>{{userTexts.lastname[selectedLang]}}</td>
+            <td>{{user.lastName}}</td>
+          </tr>
+          <tr>
+            <td>{{userTexts.email[selectedLang]}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+          <tr>
+            <td>{{userTexts.nrReviews[selectedLang]}}</td>
+            <td>{{reviews.length}}</td>
+          </tr>
+          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin'">
+            <td>{{userTexts.status[selectedLang]}}</td>
+            <td>{{getStatus()}}</td>
+          </tr>
+          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">
+            <td>{{userTexts.prefCategories[selectedLang]}}</td>
+            <td>{{getPreferredCategories()}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <mat-card-content class="reviews-mobile">
+        <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.reviews[selectedLang]}}</p>
+        <div class="review-mobile" *ngFor="let review of reviews">
           <div fxLayout="row" fxLayoutAlign="space-around center">
-            <p>{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
+            <p class="link" [routerLink]="'/movies/' + review.movie._id">{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
             <span class="fill-remaining-space"></span>
             <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
               stars
             </i>
           </div>
-          <p class="review-text">
+          <p class="review-text-mobile">
             {{review.comment}}
           </p>
           <mat-card-actions *ngIf="loggedInUser && user._id === loggedInUser._id">
-            <button mat-raised-button class="button-mid"color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
+            <button mat-raised-button class="button-mid" color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
             <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
           </mat-card-actions>
-          <mat-divider></mat-divider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="user-card" *ngIf="user" fxHide.lt-sm="true" fxHide.sm="true">
+      <div class="user-profile">
+        <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
+        <table>
+          <tr>
+            <td>{{userTexts.firstname[selectedLang]}}</td>
+            <td>{{user.firstName}}</td>
+          </tr>
+          <tr>
+            <td>{{userTexts.lastname[selectedLang]}}</td>
+            <td>{{user.lastName}}</td>
+          </tr>
+          <tr>
+            <td>{{userTexts.email[selectedLang]}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+          <tr>
+            <td>{{userTexts.nrReviews[selectedLang]}}</td>
+            <td>{{reviews.length}}</td>
+          </tr>
+          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin'">
+            <td>{{userTexts.status[selectedLang]}}</td>
+            <td>{{getStatus()}}</td>
+          </tr>
+          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">
+            <td>{{userTexts.prefCategories[selectedLang]}}</td>
+            <td>{{getPreferredCategories()}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <mat-card-content class="reviews-desktop">
+        <p *ngIf="reviews.length" class="reviews-title-desktop">{{userTexts.reviews[selectedLang]}}</p>
+        <div class="review-desktop" *ngFor="let review of reviews">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <p class="link" [routerLink]="'/movies/' + review.movie._id">{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
+            <span class="fill-remaining-space"></span>
+            <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
+              stars
+            </i>
+          </div>
+          <p class="review-text-desktop">
+            {{review.comment}}
+          </p>
+          <mat-card-actions *ngIf="loggedInUser && user._id === loggedInUser._id">
+            <button mat-raised-button class="button-mid" color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
+            <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
+          </mat-card-actions>
         </div>
       </mat-card-content>
     </mat-card>

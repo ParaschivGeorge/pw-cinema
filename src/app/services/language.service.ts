@@ -83,6 +83,7 @@ export class LanguageService {
     prefCategories: ['Preferred categories', 'Categorii preferate'],
     edit: ['Edit', 'Modifica'],
     delete: ['Delete', 'Sterge'],
+    profile: ['User profile', 'Profil utilizator']
   };
 
   constructor() { }
