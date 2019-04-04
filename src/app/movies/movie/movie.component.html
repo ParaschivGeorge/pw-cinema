@@ -1,13 +1,22 @@
 <div class="container-fluid">
 <!-- mobile -->
   <mat-card class="movie-card" *ngIf="movie" fxHide.gt-sm="true">
-    <mat-card-header>
-      <mat-card-title>{{movie.title}}</mat-card-title>
-      <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+    <mat-card-header class="movie-card-header-mobile">
+      <div>
+        <mat-card-title class="movie-title-mobile">{{movie.title}}</mat-card-title>
+        <mat-card-subtitle class="movie-subtitle-mobile">{{movie.releaseDate}} | {{movie.type}}</mat-card-subtitle>
+      </div>
+      <span class="fill-remaining-space"></span>
+      <div class="rating-mobile">
+        {{getStars()}} / 5            
+        <i class="rating-mobile material-icons">
+          stars
+        </i>
+      </div>
     </mat-card-header>
-    <img class="poster" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
-    <mat-card-content>
-      <p class="description">
+    <mat-card-content class="movie-mobile">
+      <img class="poster-mobile" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
+      <p class="description-mobile">
         {{movie.description}}
       </p>
       <mat-card-actions *ngIf="user">
@@ -21,39 +30,39 @@
           {{movieTexts.add[selectedLang]}}
         </button>
       </mat-card-actions>
-      <p *ngIf="reviews.length" class="reviews-title">{{movieTexts.reviews[selectedLang]}}</p>
-      <mat-divider></mat-divider>
-      <div class="review" *ngFor="let review of reviews">
+    </mat-card-content>
+    <mat-card-content class="reviews-mobile">
+      <p *ngIf="reviews.length" class="reviews-title-mobile">{{movieTexts.reviews[selectedLang]}}</p>
+      <div class="review-mobile" *ngFor="let review of reviews">
         <div fxLayout="row" fxLayoutAlign="space-around center">
-          <p>{{movieTexts.user[selectedLang]}}: {{review.user.firstName}} {{review.user.lastName}}</p>
+          <p class="link" (click)="goToUserProfile(review.user)">{{movieTexts.user[selectedLang]}}: {{review.user.firstName}} {{review.user.lastName}}</p>
           <span class="fill-remaining-space"></span>
           <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
             stars
           </i>
         </div>
-        <p class="review-text">
+        <p class="review-text-mobile">
           {{review.comment}}
         </p>
         <mat-card-actions *ngIf="user">
           <button mat-raised-button class="button-mid" color="accent" *ngIf="review.user._id === user._id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
           <button mat-raised-button class="button" color="warn" *ngIf="review.user._id === user._id || user.role === 'admin'" (click)="deleteReview(review._id)">{{movieTexts.delete[selectedLang]}}</button>
         </mat-card-actions>
-        <mat-divider></mat-divider>
       </div>
     </mat-card-content>
   </mat-card>
 
 <!-- desktop -->
-  <mat-card class="movie-card-desktop" *ngIf="movie" fxHide.lt-sm="true" fxHide.sm="true">    
+  <mat-card class="movie-card" *ngIf="movie" fxHide.lt-sm="true" fxHide.sm="true">    
     <mat-card-header class="movie-card-header-desktop">
       <div>
         <mat-card-title class="movie-title-desktop">{{movie.title}}</mat-card-title>
         <mat-card-subtitle class="movie-subtitle-desktop">{{movie.releaseDate}} | {{movie.type}}</mat-card-subtitle>
       </div>
       <span class="fill-remaining-space"></span>
-      <div class="rating">
+      <div class="rating-desktop">
         {{getStars()}} / 5            
-        <i class="rating material-icons">
+        <i class="rating-desktop material-icons">
           stars
         </i>
       </div>
