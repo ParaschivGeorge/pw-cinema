@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <mat-card class="movie-card" fxHide.lt-sm="true">
+    <mat-card-title class="title">Movies</mat-card-title>
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <mat-form-field class="filter">
         <input matInput [(ngModel)]="query" (ngModelChange)="filter()" [placeholder]="moviesTexts.filter[selectedLang]">
@@ -23,6 +24,7 @@
 
 
   <mat-card class="movie-card" fxHide.gt-sm="true" fxHide.sm="true">
+    <mat-card-title class="title">Movies</mat-card-title>
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <mat-form-field class="filter">
         <input matInput [(ngModel)]="query" (ngModelChange)="filter()" [placeholder]="moviesTexts.filter[selectedLang]">

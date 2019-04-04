@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <!-- mobile -->
   <mat-card class="users-card" fxHide.gt-sm="true">
+    <mat-card-title class="title">Users</mat-card-title>
     <mat-card-header>
       <mat-card-title>{{usersTexts.connectedUsers[selectedLang]}}: {{onlineUsers}}</mat-card-title>
     </mat-card-header>
@@ -67,9 +68,9 @@
   </mat-card>
   
   <!-- desktop -->
-  <mat-card class="users-card" fxHide.lt-sm="true" fxHide.sm="true">    
+  <mat-card class="users-card" fxHide.lt-sm="true" fxHide.sm="true">   
+    <mat-card-title class="title">Users</mat-card-title> 
     <div div fxLayout="row" fxLayoutAlign="space-between stretch" >
-
       <div class="desktop-users-data">
         <mat-card-header>
           <mat-card-title class="all-users-title">{{usersTexts.top5[selectedLang]}}</mat-card-title>
