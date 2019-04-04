@@ -15,7 +15,7 @@
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/login" *ngIf="!user">{{navbarTexts.login[selectedLang]}}</a>
       <a mat-button routerLink="/register" *ngIf="!user">{{navbarTexts.register[selectedLang]}}</a>
-      <a mat-button [routerLink]="'/users/' + user._id" *ngIf="user">{{navbarTexts.yourProfile[selectedLang]}}</a>
+      <a mat-button [routerLink]="'/users/' + user._id" *ngIf="user && user.role !== 'admin'">{{navbarTexts.yourProfile[selectedLang]}}</a>
       <a mat-button routerLink="/movies">{{navbarTexts.movies[selectedLang]}}</a>
       <a mat-button routerLink="/users">{{navbarTexts.users[selectedLang]}}</a>
       <button mat-raised-button *ngIf="user" (click)="logout()">{{navbarTexts.logout[selectedLang]}}</button>
@@ -33,7 +33,7 @@
         </div>
         <a mat-button routerLink="/login" *ngIf="!user">{{navbarTexts.login[selectedLang]}}</a>
         <a mat-button routerLink="/register" *ngIf="!user">{{navbarTexts.register[selectedLang]}}</a>
-        <a mat-button [routerLink]="'/users/' + user._id" *ngIf="user">{{navbarTexts.yourProfile[selectedLang]}}</a>
+        <a mat-button [routerLink]="'/users/' + user._id" *ngIf="user && user.role !== 'admin'">{{navbarTexts.yourProfile[selectedLang]}}</a>
         <a mat-button routerLink="/movies">{{navbarTexts.movies[selectedLang]}}</a>
         <a mat-button routerLink="/users">{{navbarTexts.users[selectedLang]}}</a>
       </div>
