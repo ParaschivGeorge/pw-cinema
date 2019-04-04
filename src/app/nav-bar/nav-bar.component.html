@@ -7,12 +7,13 @@
     </div>
       
     <span class="welcome" *ngIf="user">{{navbarTexts.hello[selectedLang]}}, {{user.firstName}}!</span>
-    <span class="fill-remaining-space"></span>
-    <button mat-raised-button fxHide.gt-sm="true" *ngIf="user" (click)="logout()">{{navbarTexts.logout[selectedLang]}}</button> 
+    <span class="fill-remaining-space"></span>    
+    <mat-icon fxHide.gt-sm="true" (click)="logout()" *ngIf="user">meeting_room </mat-icon>
     
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/login" *ngIf="!user">{{navbarTexts.login[selectedLang]}}</a>
       <a mat-button routerLink="/register" *ngIf="!user">{{navbarTexts.register[selectedLang]}}</a>
+      <a mat-button [routerLink]="'/users/' + user._id" *ngIf="user">{{navbarTexts.yourProfile[selectedLang]}}</a>
       <a mat-button routerLink="/movies">{{navbarTexts.movies[selectedLang]}}</a>
       <a mat-button routerLink="/users">{{navbarTexts.users[selectedLang]}}</a>
       <button mat-raised-button *ngIf="user" (click)="logout()">{{navbarTexts.logout[selectedLang]}}</button>
@@ -30,6 +31,7 @@
         </div>
         <a mat-button routerLink="/login" *ngIf="!user">{{navbarTexts.login[selectedLang]}}</a>
         <a mat-button routerLink="/register" *ngIf="!user">{{navbarTexts.register[selectedLang]}}</a>
+        <a mat-button [routerLink]="'/users/' + user._id" *ngIf="user">{{navbarTexts.yourProfile[selectedLang]}}</a>
         <a mat-button routerLink="/movies">{{navbarTexts.movies[selectedLang]}}</a>
         <a mat-button routerLink="/users">{{navbarTexts.users[selectedLang]}}</a>
       </div>

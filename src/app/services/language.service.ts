@@ -14,6 +14,7 @@ export class LanguageService {
     register: ['Register', 'Inregistrare'],
     movies: ['Movies', 'Filme'],
     users: ['Users', 'Utilizatori'],
+    yourProfile: ['Your profile', 'Profilul tau'],
     logout: ['Logout', 'Deconectare']
   };
   public loginTexts = {
@@ -56,7 +57,6 @@ export class LanguageService {
     submit: ['Submit', 'Confirma']
   };
   public usersTexts = {
-    yourProfile: ['Your profile', 'Profilul tau'],
     top5: ['Top 5 users', 'Top 5 utilizatori'],
     mostReviews: ['most reviews', 'cele mai multe recenzii'],
     reviews: ['reviews', 'recenzii'],
@@ -64,11 +64,17 @@ export class LanguageService {
     daysAgo: ['days ago', 'zile in urma'],
     dayAgo: ['day ago', 'zi in urma'],
     allUsers: ['All users', 'Toti utilizatorii'],
-    users5days: ['Users in the last 5 days', 'Utilizatori in ultimele 5 zile']
+    users5days: ['Users in the last 5 days', 'Utilizatori in ultimele 5 zile'],
+    firstname: ['First name', 'Prenume'],
+    lastname: ['Last name', 'Nume'],
+    fullname: ['Full name', 'Nume'],
+    email: ['Email', 'Email'],
+    filter: ['Filter', 'Filtreaza'],
+    noReviews: ['No. reviews', 'Nr. recenzii']
   };
   public userTexts = {
-    firstname: ['Firstname', 'Prenume'],
-    lastname: ['Lastname', 'Nume'],
+    firstname: ['First name', 'Prenume'],
+    lastname: ['Last name', 'Nume'],
     email: ['Email', 'Email'],
     nrReviews: ['Number of reviews', 'Numar de recenzii'],
     reviews: ['Reviews', 'Recenzii'],

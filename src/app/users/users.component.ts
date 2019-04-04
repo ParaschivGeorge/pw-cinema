@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LanguageService } from '../services/language.service';
 import { UsersService } from '../services/users.service';
 import { User } from '../models/user';
@@ -6,6 +6,7 @@ import { ReviewsService } from '../services/reviews.service';
 import { Review } from '../models/review';
 import { Router } from '@angular/router';
 import { SocketIoService } from '../services/socket-io.service';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-users',
@@ -16,6 +17,14 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   reviews: Review[] = [];
+  dataSource;
+  dataSource1;
+  dataSource2;
+  
+  displayedColumns: string[] = ['firstName', 'lastName', 'email'];
+  displayedColumns1: string[] = ['name', 'email'];
+  @ViewChild('matSort1') sort1: MatSort;
+  @ViewChild(MatSort) sort2: MatSort;
 
   constructor(
     private usersService: UsersService,
@@ -56,15 +65,31 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.usersService.getAll().subscribe(users => {
       this.users = users;
+      this.dataSource = new MatTableDataSource(users);
+      this.dataSource.sort = this.sort1;
+      const usersList = [];
+      users.forEach(user => {
+        usersList.push({name: user.firstName + ' ' + user.lastName, email: user.email});
+      });
+      this.dataSource1 = new MatTableDataSource(usersList);
+      this.dataSource1.sort = this.sort2;
+      console.log(this.dataSource1);
+      console.log(this.dataSource);
       this.updateChart();
-      console.log(users)
+      if (this.reviews.length) {
+        this.dataSource2 = new MatTableDataSource(this.getTopUsers());
+      }
+      console.log(users);
     },
     error => {
       console.log(error);
     });
     this.reviewsService.getAll(null, null).subscribe(reviews => {
       this.reviews = reviews;
-      console.log(reviews)
+      console.log(reviews);
+      if (this.users.length) {
+        this.dataSource2 = new MatTableDataSource(this.getTopUsers());
+      }
     },
     error => {
       console.log(error);
@@ -76,6 +101,10 @@ export class UsersComponent implements OnInit {
 
   get onlineUsers() {
     return localStorage.getItem('onlineUsers');
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   updateChart() {
@@ -103,8 +132,8 @@ export class UsersComponent implements OnInit {
   getTopUsers(): User[] {
     if (this.users.length) {
       return this.users.sort((a, b) => {
-        let ra = this.reviews.filter(r => r.user === a._id).length;
-        let rb = this.reviews.filter(r => r.user === b._id).length;
+        let ra = this.reviews.filter(r => r.user._id === a._id).length;
+        let rb = this.reviews.filter(r => r.user._id === b._id).length;
         return rb - ra;
       }).slice(0, 5);
     }
