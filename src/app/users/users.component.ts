@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
   dataSource;
   dataSource1;
   dataSource2;
+  query: string;
   
   displayedColumns: string[] = ['firstName', 'lastName', 'email'];
   displayedColumns1: string[] = ['name', 'email'];

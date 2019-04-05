@@ -27,8 +27,6 @@ mat-card-subtitle {
     font-size: 15px;
     text-align: justify;
     padding: 30px 60px;
-    border-top-left-radius: 5px;
-    border: 2px solid #000;
     height: 100%;
 }
 
@@ -47,8 +45,6 @@ mat-card-subtitle {
 }
 
 .poster-desktop {
-    border-top-right-radius: 5px;
-    border: 2px solid #000;
     margin: 0 auto;
     max-height: 442px;
     max-width: 300px;
@@ -60,17 +56,13 @@ mat-card-subtitle {
 .reviews-desktop {
     margin-top: 30px;
     padding: 20px 0;
-    border-radius: 5px;
-    border: 2px solid #000;
 }
 
 .review-desktop {
     text-align: justify;
-    margin: 10px 30px;
+    margin: 10px 0;
     padding: 15px 20px;
-    background: #C5CAE9;
-    border-radius: 5px;
-    border: 2px solid #000;
+    background: #fff;
 }
 
 .reviews-title-desktop {    
@@ -95,9 +87,7 @@ mat-card-subtitle {
 .review-mobile {
     text-align: justify;
     padding: 10px 2vw;
-    background: #C5CAE9;
-    border-radius: 5px;
-    border: 2px solid #000;    
+    background: #fff; 
     min-width: 287px;
     margin-top: 10px;
 }
@@ -135,12 +125,13 @@ mat-card-subtitle {
     padding-top: 20px;
     padding-right: 30px;
     border-radius: 5px;
-    min-width: 272px;
+    min-width: 270px;
 }
 
 .movie-title-mobile {
     font-size: 27px;
     max-width: 50vw;
+    text-align: left;
 }
 
 .movie-subtitle-mobile {
@@ -158,11 +149,8 @@ mat-card-subtitle {
 .movie-mobile {
     margin: 0;
     padding: 16px 0;
-    border-radius: 5px;
-    border: 2px solid #000;
     min-width: 299px;
 }
-
 
 .description-mobile {
     font-size: 15px;

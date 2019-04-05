@@ -54,9 +54,7 @@ mat-card-title {
 .review-mobile {
     text-align: justify;
     padding: 10px 2vw;
-    background: #C5CAE9;
-    border-radius: 5px;
-    border: 2px solid #000;    
+    background: #fff;
     min-width: 287px;
     margin-top: 10px;
     text-align: left;
@@ -80,17 +78,13 @@ mat-card-title {
 .reviews-desktop {
     margin-top: 30px;
     padding: 20px 0;
-    border-radius: 5px;
-    border: 2px solid #000;
 }
 
 .review-desktop {
     text-align: justify;
-    margin: 10px 30px;
+    margin: 10px 0;
     padding: 15px 20px;
-    background: #C5CAE9;
-    border-radius: 5px;
-    border: 2px solid #000;
+    background: #fff;
     text-align: left;
 }
 
@@ -106,10 +100,8 @@ mat-card-title {
 }
 
 .user-profile {
-    border: 2px solid #000;
-    border-radius: 5px;
     width: 100%;
-    overflow:hidden;
+    overflow: auto;
     padding-top: 20px;
 }
 

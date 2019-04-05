@@ -1,7 +1,7 @@
 <div class="container-fluid">
 <!-- mobile -->
   <mat-card class="movie-card" *ngIf="movie" fxHide.gt-sm="true">
-    <mat-card-header class="movie-card-header-mobile">
+    <mat-card-header class="movie-card-header-mobile mat-elevation-z8">
       <div>
         <mat-card-title class="movie-title-mobile">{{movie.title}}</mat-card-title>
         <mat-card-subtitle class="movie-subtitle-mobile">{{movie.releaseDate}} | {{movie.type}}</mat-card-subtitle>
@@ -14,7 +14,7 @@
         </i>
       </div>
     </mat-card-header>
-    <mat-card-content class="movie-mobile">
+    <mat-card-content class="movie-mobile mat-elevation-z8">
       <img class="poster-mobile" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
       <p class="description-mobile">
         {{movie.description}}
@@ -33,7 +33,7 @@
     </mat-card-content>
     <mat-card-content class="reviews-mobile" *ngIf="reviews && reviews.length">
       <p *ngIf="reviews.length" class="reviews-title-mobile">{{movieTexts.reviews[selectedLang]}}</p>
-      <div class="review-mobile" *ngFor="let review of reviews">
+      <div class="review-mobile  mat-elevation-z8" *ngFor="let review of reviews">
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="link" (click)="goToUserProfile(review.user)">{{movieTexts.user[selectedLang]}}: {{review.user.firstName}} {{review.user.lastName}}</p>
           <span class="fill-remaining-space"></span>
@@ -44,7 +44,7 @@
         <p class="review-text-mobile">
           {{review.comment}}
         </p>
-        <mat-card-actions *ngIf="user">
+        <mat-card-actions *ngIf="user" fxLayout="row" fxLayoutAlign="space-evenly center">
           <button mat-raised-button class="button-mid" color="accent" *ngIf="review.user._id === user._id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
           <button mat-raised-button class="button" color="warn" *ngIf="review.user._id === user._id || user.role === 'admin'" (click)="deleteReview(review._id)">{{movieTexts.delete[selectedLang]}}</button>
         </mat-card-actions>
@@ -54,7 +54,7 @@
 
 <!-- desktop -->
   <mat-card class="movie-card" *ngIf="movie" fxHide.lt-sm="true" fxHide.sm="true">  
-    <mat-card-header class="movie-card-header-desktop">
+    <mat-card-header class="movie-card-header-desktop mat-elevation-z8">
       <div>
         <mat-card-title class="movie-title-desktop">{{movie.title}}</mat-card-title>
         <mat-card-subtitle class="movie-subtitle-desktop">{{movie.releaseDate}} | {{movie.type}}</mat-card-subtitle>
@@ -69,7 +69,7 @@
     </mat-card-header>
     <div fxLayout="row" fxLayoutAlign="none">
       <div>
-        <p class="description-desktop" fxLayout="column" fxLayoutAlign="space-between center" >
+        <p class="description-desktop mat-elevation-z8" fxLayout="column" fxLayoutAlign="space-between center" >
           {{movie.description}}
           <mat-card-actions *ngIf="user">
             <button
@@ -84,11 +84,11 @@
           </mat-card-actions>
         </p>
       </div>
-      <img class="poster-desktop" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
+      <img class="poster-desktop mat-elevation-z8" mat-card-image [src]="movie.photoUrl" [alt]="movie.title">
     </div>
     <mat-card-content class="reviews-desktop" *ngIf="reviews && reviews.length">
       <p *ngIf="reviews.length" class="reviews-title-desktop">{{movieTexts.reviews[selectedLang]}}</p>
-      <div class="review-desktop" *ngFor="let review of reviews">
+      <div class="review-desktop mat-elevation-z8" *ngFor="let review of reviews">
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="link" (click)="goToUserProfile(review.user)">{{movieTexts.user[selectedLang]}}: {{review.user.firstName}} {{review.user.lastName}}</p>
           <span class="fill-remaining-space"></span>
@@ -99,7 +99,7 @@
         <p class="review-text-desktop">
           {{review.comment}}
         </p>
-        <mat-card-actions *ngIf="user">
+        <mat-card-actions *ngIf="user" fxLayout="row" fxLayoutAlign="space-evenly center">
           <button mat-raised-button class="button-mid" color="accent" *ngIf="review.user._id === user._id" (click)="openBottomSheet(review)">{{movieTexts.edit[selectedLang]}}</button>
           <button mat-raised-button class="button" color="warn" *ngIf="review.user._id === user._id || user.role === 'admin'" (click)="deleteReview(review._id)">{{movieTexts.delete[selectedLang]}}</button>
         </mat-card-actions>

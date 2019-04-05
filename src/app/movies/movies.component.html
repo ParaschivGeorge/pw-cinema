@@ -1,7 +1,8 @@
 <div class="container-fluid">
+  <!-- desktop -->
   <mat-card class="movie-card" fxHide.lt-sm="true">
     <mat-card-title class="title">{{moviesTexts.movies[selectedLang]}}</mat-card-title>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxLayout="row" fxLayoutAlign="start center">
       <mat-form-field class="filter">
         <input matInput [(ngModel)]="query" (ngModelChange)="filter()" [placeholder]="moviesTexts.filter[selectedLang]">
       </mat-form-field>
@@ -9,7 +10,7 @@
         <button mat-raised-button color="primary" (click)="openBottomSheet(null)">{{moviesTexts.add[selectedLang]}}</button>
       </mat-card-actions>
     </div>
-    <div *ngFor="let movie of filteredMovies"  fxLayout="row" fxLayoutAlign="space-around center" class="movie-div">
+    <div *ngFor="let movie of filteredMovies"  fxLayout="row" fxLayoutAlign="space-around center" class="movie-div mat-elevation-z8">
       <mat-card-header>
         <mat-card-title>{{movie.title}}</mat-card-title>
         <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
@@ -22,10 +23,10 @@
     </div>
   </mat-card>
 
-
+  <!-- mobile -->
   <mat-card class="movie-card" fxHide.gt-sm="true" fxHide.sm="true">
     <mat-card-title class="title">{{moviesTexts.movies[selectedLang]}}</mat-card-title>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxLayout="row" fxLayoutAlign="start center">
       <mat-form-field class="filter">
         <input matInput [(ngModel)]="query" (ngModelChange)="filter()" [placeholder]="moviesTexts.filter[selectedLang]">
       </mat-form-field>
@@ -33,7 +34,7 @@
         <button mat-raised-button color="primary" (click)="openBottomSheet(null)">{{moviesTexts.add[selectedLang]}}</button>
       </mat-card-actions>
     </div>
-    <div *ngFor="let movie of filteredMovies" class="movie-div">
+    <div *ngFor="let movie of filteredMovies" class="movie-div mat-elevation-z8">
       <mat-card-header>
         <mat-card-title>{{movie.title}}</mat-card-title>
         <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>

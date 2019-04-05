@@ -1,105 +1,107 @@
 <div class="container-fluid">
-    <mat-card class="user-card" *ngIf="user" fxHide.gt-sm="true">
-      <div class="user-profile">
-        <p class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
-        <table>
-          <tr>
-            <td>{{userTexts.firstname[selectedLang]}}</td>
-            <td>{{user.firstName}}</td>
-          </tr>
-          <tr>
-            <td>{{userTexts.lastname[selectedLang]}}</td>
-            <td>{{user.lastName}}</td>
-          </tr>
-          <tr>
-            <td>{{userTexts.email[selectedLang]}}</td>
-            <td>{{user.email}}</td>
-          </tr>
-          <tr>
-            <td>{{userTexts.nrReviews[selectedLang]}}</td>
-            <td>{{reviews.length}}</td>
-          </tr>
-          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin'">
-            <td>{{userTexts.status[selectedLang]}}</td>
-            <td>{{getStatus()}}</td>
-          </tr>
-          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">
-            <td>{{userTexts.prefCategories[selectedLang]}}</td>
-            <td>{{getPreferredCategories()}}</td>
-          </tr>
-        </table>
-      </div>
+  <!-- mobile -->
+  <mat-card class="user-card" *ngIf="user" fxHide.gt-sm="true">
+    <div class="user-profile mat-elevation-z8">
+      <p class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
+      <table>
+        <tr>
+          <td>{{userTexts.firstname[selectedLang]}}</td>
+          <td>{{user.firstName}}</td>
+        </tr>
+        <tr>
+          <td>{{userTexts.lastname[selectedLang]}}</td>
+          <td>{{user.lastName}}</td>
+        </tr>
+        <tr>
+          <td>{{userTexts.email[selectedLang]}}</td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>{{userTexts.nrReviews[selectedLang]}}</td>
+          <td>{{reviews.length}}</td>
+        </tr>
+        <tr *ngIf="loggedInUser && loggedInUser.role === 'admin'">
+          <td>{{userTexts.status[selectedLang]}}</td>
+          <td>{{getStatus()}}</td>
+        </tr>
+        <tr *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">
+          <td>{{userTexts.prefCategories[selectedLang]}}</td>
+          <td>{{getPreferredCategories()}}</td>
+        </tr>
+      </table>
+    </div>
 
-      <mat-card-content class="reviews-mobile" *ngIf="reviews && reviews.length">
-        <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.reviews[selectedLang]}}</p>
-        <div class="review-mobile" *ngFor="let review of reviews">
-          <div fxLayout="row" fxLayoutAlign="space-around center">
-            <p class="link" [routerLink]="'/movies/' + review.movie._id">{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
-            <span class="fill-remaining-space"></span>
-            <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
-              stars
-            </i>
-          </div>
-          <p class="review-text-mobile">
-            {{review.comment}}
-          </p>
-          <mat-card-actions *ngIf="loggedInUser && user._id === loggedInUser._id">
-            <button mat-raised-button class="button-mid" color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
-            <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
-          </mat-card-actions>
+    <mat-card-content class="reviews-mobile" *ngIf="reviews && reviews.length">
+      <p *ngIf="reviews.length" class="reviews-title-mobile">{{userTexts.reviews[selectedLang]}}</p>
+      <div class="review-mobile mat-elevation-z8" *ngFor="let review of reviews">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="link" [routerLink]="'/movies/' + review.movie._id">{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
+          <span class="fill-remaining-space"></span>
+          <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
+            stars
+          </i>
         </div>
-      </mat-card-content>
-    </mat-card>
-    
-    <mat-card class="user-card" *ngIf="user" fxHide.lt-sm="true" fxHide.sm="true">
-      <div class="user-profile">
-        <p class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
-        <table>
-          <tr>
-            <td>{{userTexts.firstname[selectedLang]}}</td>
-            <td>{{user.firstName}}</td>
-          </tr>
-          <tr>
-            <td>{{userTexts.lastname[selectedLang]}}</td>
-            <td>{{user.lastName}}</td>
-          </tr>
-          <tr>
-            <td>{{userTexts.email[selectedLang]}}</td>
-            <td>{{user.email}}</td>
-          </tr>
-          <tr>
-            <td>{{userTexts.nrReviews[selectedLang]}}</td>
-            <td>{{reviews.length}}</td>
-          </tr>
-          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin'">
-            <td>{{userTexts.status[selectedLang]}}</td>
-            <td>{{getStatus()}}</td>
-          </tr>
-          <tr *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">
-            <td>{{userTexts.prefCategories[selectedLang]}}</td>
-            <td>{{getPreferredCategories()}}</td>
-          </tr>
-        </table>
+        <p class="review-text-mobile">
+          {{review.comment}}
+        </p>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-evenly center" *ngIf="loggedInUser && user._id === loggedInUser._id">
+          <button mat-raised-button class="button-mid" color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
+          <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
+        </mat-card-actions>
       </div>
+    </mat-card-content>
+  </mat-card>
+  
+  <!-- desktop -->
+  <mat-card class="user-card" *ngIf="user" fxHide.lt-sm="true" fxHide.sm="true">
+    <div class="user-profile mat-elevation-z8">
+      <p class="reviews-title-mobile">{{userTexts.profile[selectedLang]}}</p>
+      <table>
+        <tr>
+          <td>{{userTexts.firstname[selectedLang]}}</td>
+          <td>{{user.firstName}}</td>
+        </tr>
+        <tr>
+          <td>{{userTexts.lastname[selectedLang]}}</td>
+          <td>{{user.lastName}}</td>
+        </tr>
+        <tr>
+          <td>{{userTexts.email[selectedLang]}}</td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>{{userTexts.nrReviews[selectedLang]}}</td>
+          <td>{{reviews.length}}</td>
+        </tr>
+        <tr *ngIf="loggedInUser && loggedInUser.role === 'admin'">
+          <td>{{userTexts.status[selectedLang]}}</td>
+          <td>{{getStatus()}}</td>
+        </tr>
+        <tr *ngIf="loggedInUser && loggedInUser.role === 'admin' && getPreferredCategories()">
+          <td>{{userTexts.prefCategories[selectedLang]}}</td>
+          <td>{{getPreferredCategories()}}</td>
+        </tr>
+      </table>
+    </div>
 
-      <mat-card-content class="reviews-desktop" *ngIf="reviews && reviews.length">
-        <p *ngIf="reviews.length" class="reviews-title-desktop">{{userTexts.reviews[selectedLang]}}</p>
-        <div class="review-desktop" *ngFor="let review of reviews">
-          <div fxLayout="row" fxLayoutAlign="space-around center">
-            <p class="link" [routerLink]="'/movies/' + review.movie._id">{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
-            <span class="fill-remaining-space"></span>
-            <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
-              stars
-            </i>
-          </div>
-          <p class="review-text-desktop">
-            {{review.comment}}
-          </p>
-          <mat-card-actions *ngIf="loggedInUser && user._id === loggedInUser._id">
-            <button mat-raised-button class="button-mid" color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
-            <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
-          </mat-card-actions>
+    <mat-card-content class="reviews-desktop" *ngIf="reviews && reviews.length">
+      <p *ngIf="reviews.length" class="reviews-title-desktop">{{userTexts.reviews[selectedLang]}}</p>
+      <div class="review-desktop mat-elevation-z8" *ngFor="let review of reviews">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="link" [routerLink]="'/movies/' + review.movie._id">{{userTexts.movie[selectedLang]}}: {{review.movie.title}}</p>
+          <span class="fill-remaining-space"></span>
+          <i *ngFor="let i of arrayTwo(review.rating)" class="material-icons">
+            stars
+          </i>
         </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+        <p class="review-text-desktop">
+          {{review.comment}}
+        </p>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-evenly center" *ngIf="loggedInUser && user._id === loggedInUser._id">
+          <button mat-raised-button class="button-mid" color="accent" (click)="openBottomSheet(review)">{{userTexts.edit[selectedLang]}}</button>
+          <button mat-raised-button class="button" color="warn" (click)="deleteReview(review._id)">{{userTexts.delete[selectedLang]}}</button>
+        </mat-card-actions>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
