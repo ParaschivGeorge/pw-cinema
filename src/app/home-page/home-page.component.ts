@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private langService: LanguageService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  get homeTexts() {
+    return this.langService.homeTexts;
   }
 
+  get selectedLang() {
+    return this.langService.selectedLang;
+  }
 }

@@ -88,6 +88,13 @@ export class LanguageService {
     delete: ['Delete', 'Sterge'],
     profile: ['User profile', 'Profil utilizator']
   };
+  public homeTexts = {
+    signIn: ['Sign in', 'Intra'],
+    signUp: ['Sign up', 'Creeaza cont'],
+    callToAction: ['Become the critic!', 'Devino un critic de film!'],
+    description: ['Passionate about movies? Share your experience with us!', 'Esti cinefil? Spune-ti parerea aici!'],
+    getStarted: ['Get started!', 'Sa incepem!']
+  };
 
   constructor() { }
 
