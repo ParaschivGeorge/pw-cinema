@@ -10,10 +10,13 @@
         <button mat-raised-button color="primary" (click)="openBottomSheet(null)">{{moviesTexts.add[selectedLang]}}</button>
       </mat-card-actions>
     </div>
-    <div *ngFor="let movie of filteredMovies"  fxLayout="row" fxLayoutAlign="space-around center" class="movie-div mat-elevation-z8">
+    <div *ngFor="let movie of filteredMovies"  fxLayout="row" fxLayoutAlign="space-between center" class="movie-div mat-elevation-z8">
       <mat-card-header>
-        <mat-card-title>{{movie.title}}</mat-card-title>
-        <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+        <img class="header-image" [src]="movie.photoUrl" alt="">
+        <div>
+          <mat-card-title>{{movie.title}}</mat-card-title>
+          <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+        </div>
       </mat-card-header>
       <mat-card-actions>
         <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie._id)">{{moviesTexts.reviews[selectedLang]}}</button>
@@ -35,9 +38,13 @@
       </mat-card-actions>
     </div>
     <div *ngFor="let movie of filteredMovies" class="movie-div mat-elevation-z8">
-      <mat-card-header>
-        <mat-card-title>{{movie.title}}</mat-card-title>
-        <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+      <mat-card-header fxLayout="row">
+        <div>
+          <mat-card-title>{{movie.title}}</mat-card-title>
+          <mat-card-subtitle>{{movie.releaseDate}} - {{movie.type}}</mat-card-subtitle>
+        </div>
+        <span class="fill-remaining-space"></span>
+        <img class="header-image mobile-header-image" [src]="movie.photoUrl" alt="">
       </mat-card-header>
       <mat-card-actions>
         <button mat-raised-button class="button" color="primary" (click)="selectMovie(movie._id)">{{moviesTexts.reviews[selectedLang]}}</button>

@@ -2,7 +2,8 @@ img {
     width: 50%;
     height: auto;
     padding: 5vh 0;
-    max-width: 500px;
+    max-width: 500px;    
+    cursor: pointer;
 }
 
 div {
@@ -11,7 +12,20 @@ div {
 
 mat-card-title {
     font-size: 40px;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    color: #FF8F00;
+}
+
+.description {
+    color: #FFB300;
+    font-family: 'Roboto', sans-serif;
+}
+
+.url {    
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
     color: #FF8F00;
     text-decoration: underline;
+    padding: 0 30px;
+    cursor: pointer;
 }

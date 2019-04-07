@@ -1,5 +1,10 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
-  <mat-card-title>You are the critic!</mat-card-title>
-  <img class="logo" src="../../assets/logo.png" alt="logo">
+  <mat-card-title>Become the critic!</mat-card-title>
+  <p class="description">Passionate about movies? Share your experience with us!</p>
+  <img class="logo" src="../../assets/logo.png" alt="logo" routerLink="/movies">
   <button mat-raised-button color="warn" type="submit" routerLink="/movies">Get started!</button>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <p class="url" routerLink="/login">Sign in</p>
+    <p class="url" routerLink="/register">Sign up</p>
+  </div>
 </div>

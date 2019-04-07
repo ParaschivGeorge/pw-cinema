@@ -13,6 +13,7 @@
 
 .movie-div {
     padding: 10px 0;
+    padding-right: 30px;
 }
 
 .movie-div:nth-child(odd) {
@@ -59,4 +60,17 @@ mat-card-header {
 
 .title {
     font-size: 40px;
+}
+
+.header-image {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    padding: 0 10px;
+}
+
+span.fill-remaining-space {
+    flex: 1 1 auto;
 }
