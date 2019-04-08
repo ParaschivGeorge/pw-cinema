@@ -65,9 +65,9 @@ mat-card-header {
 .header-image {
     height: 45px;
     width: 45px;
-    border-radius: 50%;
+    border-radius: 25%;
     flex-shrink: 0;
-    object-fit: cover;
+    object-fit: fill;
     padding: 0 10px;
 }
 
